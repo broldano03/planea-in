@@ -10,31 +10,31 @@ function App() {
       description: "Incrementar las ventas",
       id: uuidv4(), // ID único
       aspectCmi: "ClientesMercado",
-      eliminado: false,
-      editable: false,
-      startDate: 0,
-      endDate: 0,
-      subItems: [
-        {
-          description: "ResultadoClave 1",
-          id: uuidv4(),
-          aspectCmi: "ClientesMercado",
-        },
-        {
-          description: "ResultadoClave 2",
-          id: uuidv4(),
-          aspectCmi: "ClientesMercado",
-        },
-      ],
+      keyResults: [],
   }
   ])
 
-  const [items, setItems] = useState([])
+  const [items, setItems] = useState([
+    { id:1,description: "KR 1" },
+    { id:2,description: "KR 2" },
+  ])
+
+  // Función para agregar items a subItems
+  const addItemsToKeyResults = () => {
+    setObjectives((prevObjectives) => 
+      prevObjectives.map((obj) => ({
+        ...obj,
+        keyResults: items, // Agrega items a KR
+      }))
+    );
+  };
 
 
   return (
     <>
-      <AspectCmi objectives={objectives} setObjectives={setObjectives} />
+      <AspectCmi objectives={objectives} setObjectives={setObjectives} 
+      items={items} setItems={setItems} />
+      
     </>
   )
 }

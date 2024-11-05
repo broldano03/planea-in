@@ -9,12 +9,7 @@ const InputItem = ({setItems}) => {
         const newItem = {
             description: item,
             id: uuidv4(), // ID único
-            typeItem: [],
-            eliminado: false,
-            editable: false,
-            startDate: 0,
-            endDate: 0,
-            subItems: [],
+
         }
 
         setItems((prevItems) => [...prevItems, newItem])
