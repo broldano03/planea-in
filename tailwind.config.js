@@ -8,6 +8,12 @@ export default {
     extend: {
       spacing: {
         'quarter':'25%',
+      },
+      colors: {
+        customBlue: '#55638F',
+        customPurple: '#7D558F',
+        customGreen: '#558A8F',
+        customBrown: '#8F6455',
       }
     },
   },

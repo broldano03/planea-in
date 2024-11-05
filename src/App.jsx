@@ -1,17 +1,40 @@
 import { useState } from 'react'
 import './App.css'
-import InputItem from './components/InputItem'
-
+import AspectCmi from './components/cmi-okr/AspectCmi'
+import { v4 as uuidv4 } from 'uuid'
 
 function App() {
 
-  const [items, setItems] = useState({})
-  const [itemId, setItemId] = useState(0)
+  const [objectives, setObjectives] = useState([
+    {
+      description: "Incrementar las ventas",
+      id: uuidv4(), // ID único
+      aspectCmi: "ClientesMercado",
+      eliminado: false,
+      editable: false,
+      startDate: 0,
+      endDate: 0,
+      subItems: [
+        {
+          description: "ResultadoClave 1",
+          id: uuidv4(),
+          aspectCmi: "ClientesMercado",
+        },
+        {
+          description: "ResultadoClave 2",
+          id: uuidv4(),
+          aspectCmi: "ClientesMercado",
+        },
+      ],
+  }
+  ])
+
+  const [items, setItems] = useState([])
+
 
   return (
     <>
-      <h1 className='text-3xl text-red-500' >Planea.in</h1>
-      <InputItem items={items} setItems={setItems} itemId={itemId} setItemId={setItemId} />
+      <AspectCmi objectives={objectives} setObjectives={setObjectives} />
     </>
   )
 }

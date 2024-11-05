@@ -4,6 +4,25 @@
 @tailwind utilities;
 
 body {
-    @apply bg-gray-400 pt-10 pl-quarter pr-quarter;
+    @apply bg-gray-200 pt-10 pl-20 pr-20;
 }
 
+.light-blue {
+    background-color: #EEEEF8;
+}
+
+.semi-blue {
+    background-color: #F8F8FF;
+}
+
+.light-purple {
+    background-color: #F5EEF8;
+}
+
+.light-green {
+    background-color: #EEF7F8;
+}
+
+.light-brown {
+    background-color: #F8F1EE;
+}
