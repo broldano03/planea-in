@@ -2,9 +2,10 @@
 import { useState } from 'react'
 import IconsItem from './IconsItem'
 import DotsIcon from './DotsIcon'
+import ShowItems from './ShowItems'
 
 // Lista de items
-const SupItems = ({ supItems, setSupItems, aspectCmi }) => {
+const SupItems = ({ supItems, setSupItems, aspectCmi, items, setItems }) => {
     const [draggingIndex, setDraggingIndex] = useState(null)
 
     const handleDragStart = (e, index) => {
@@ -20,7 +21,7 @@ const SupItems = ({ supItems, setSupItems, aspectCmi }) => {
 
         const newSupItems = [...supItems]
         const [movedItem] = newSupItems.splice(dragIndex, 1)
-        newItems.splice(dropIndex, 0, movedItem)
+        newSupItems.splice(dropIndex, 0, movedItem)
 
         setSupItems(newSupItems)
         setDraggingIndex(null)
@@ -40,13 +41,12 @@ const SupItems = ({ supItems, setSupItems, aspectCmi }) => {
         <div>
             <ul>
                 {supItems.map((supItem, index) => (
-                    <div className='   my-3' key={supItem.id}>
-                        
-                        <div className={`${aspectCmi.bgOkr} mb-7 py-7 mt-6 border-2
+                    <div key={supItem.id}>
+                        <div className={`${aspectCmi.bgOkr} mb-5 py-5 mt-6 border-2
                         border-neutral-300 rounded-md grid grid-cols-2 gap-4`}>
                             <div className="">
-                                <h2 className="uppercase font-bold text-center pb-3">Objetivo</h2>
-                                <div className="px-7">
+                                
+                                <div className="px-7 border-r-2 py-5 border-neutral-300">
                                     <li
                                     draggable
                                     onDragStart={(evt) => handleDragStart(evt, index)}
@@ -59,7 +59,8 @@ const SupItems = ({ supItems, setSupItems, aspectCmi }) => {
                                             ${draggingIndex === index ? 'bg-blue-400' : ''} `}
                                     >
                                         <DotsIcon/>
-                                        <span className="block whitespace-normal break-words">
+                                        <span className="block whitespace-normal break-words 
+                                        break-all text-left px-2">
                                             {supItem.description}
                                         </span>
                                         <div className="ml-auto mr-2" >
@@ -69,10 +70,8 @@ const SupItems = ({ supItems, setSupItems, aspectCmi }) => {
                                 </div>
                             </div>
                             <div>
-                                <h2 className="uppercase font-bold text-center pb-3">
-                                    Resultados Clave</h2>
                                 <div className="px-7">
-                                    <h2>Hola</h2>
+                                    <ShowItems items={items} setItems={setItems}/>
                                 </div>
                             </div>
                         </div>

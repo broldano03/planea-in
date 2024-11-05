@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import { useState, useRef} from 'react'
 
-const AddIconSup = ({setSupItems}) => {
+const AddIconSup = ({setSupItems, aspectCmi}) => {
 
     const [showInput, setShowInput] = useState(false)
 
@@ -22,8 +22,9 @@ const AddIconSup = ({setSupItems}) => {
 
     return (
         <>
-        <button onClick={toggleInputVisibility} className="bg-black text-1">
-            <FontAwesomeIcon icon={faPlus} className="text-neutral-600 
+        <button onClick={toggleInputVisibility} className={`${aspectCmi.color} 
+        px-10 py-1 rounded-md text-1`}>
+            <FontAwesomeIcon icon={faPlus} className="text-white
             hover:scale-125 transition-transform transform" />
         </button>
         {showInput && (
