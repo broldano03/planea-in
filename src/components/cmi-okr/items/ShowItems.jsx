@@ -5,7 +5,7 @@ import { faPlusCircle } from '@fortawesome/free-solid-svg-icons'
 import { useState, useRef } from 'react'
 
 //Mostrar items después de agregarlos
-const ShowItems = ({items, setItems}) => {
+const ShowItems = ({items, setItems ,parentId}) => {
 
     const [showInput, setShowInput] = useState(false)
     const inputRef = useRef(null)
@@ -21,16 +21,18 @@ const ShowItems = ({items, setItems}) => {
         }
     }
 
+
     return (
         <div className='text-center items-center' >
-            <Items items={items} setItems={setItems} />
+            {/* Filtra los items por el parentId proporcionado */}
+            <Items items={items.filter(item => item.parentId === parentId)} setItems={setItems} />
             <button onClick={toggleInputVisibility} className="text-xl">
                 <FontAwesomeIcon icon={faPlusCircle} className="text-neutral-400 hover:scale-125 
                 transition-transform transform" />
             </button>
             {showInput && (
                 <div ref={inputRef} tabIndex="0" onBlur={handleBlur}>
-                    <InputItem setItems={setItems} />
+                    <InputItem setItems={setItems} parentId={parentId}/>
                 </div>
             )}
         </div>

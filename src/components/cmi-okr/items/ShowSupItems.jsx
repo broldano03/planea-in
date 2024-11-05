@@ -2,7 +2,7 @@ import SupItems from './SupItems'
 import AddIconSup from './AddIconSup'
 
 //Mostrar items después de agregarlos
-const ShowSupItems = ({supItems, setSupItems, aspectCmi, items, setItems}) => {
+const ShowSupItems = ({supItems, setSupItems, aspectCmi, items, setItems, parentId}) => {
 
     return (
         <>
@@ -11,7 +11,7 @@ const ShowSupItems = ({supItems, setSupItems, aspectCmi, items, setItems}) => {
                 items={items} setItems={setItems}/>
             </div>
             <div className='text-left pb-4'>
-                <AddIconSup setSupItems={setSupItems} aspectCmi={aspectCmi}/>
+                <AddIconSup setSupItems={setSupItems} aspectCmi={aspectCmi} parentId={parentId}/>
             </div>
         </>
     )

@@ -1,7 +1,7 @@
 import ShowItems from "./items/ShowItems"
 import ShowSupItems from "./items/ShowSupItems"
 
-const Okrs = ({ objectives, setObjectives, items, setItems}) => {
+const Okrs = ({ objectives, setObjectives, items, setItems, parentId}) => {
     const aspectsCmi = [
         {
             id:1,
@@ -40,7 +40,7 @@ const Okrs = ({ objectives, setObjectives, items, setItems}) => {
                     <div className={`${aspectCmi.color} text-white px-8 py-2 justify-center inline-block rounded-md`}>
                         <h2 className="uppercase font-bold">{aspectCmi.title }</h2>
                     </div>
-                    <div className="semi-blue py-3 px-8 border-2 -mt-4 mb-10
+                    <div className="semi-blue pt-3 px-8 border-2 -mt-4 mb-10
                     border-neutral-300 rounded-md">
                         <div className="grid grid-cols-2 gap-4 mt-3 uppercase 
                         font-bold text-center">
@@ -48,7 +48,7 @@ const Okrs = ({ objectives, setObjectives, items, setItems}) => {
                             <h3>Resultados Clave</h3>
                         </div>
                         <ShowSupItems supItems={objectives} setSupItems={setObjectives} 
-                        aspectCmi={aspectCmi} items={items} setItems={setItems}/>
+                        aspectCmi={aspectCmi} items={items} setItems={setItems} parentId={parentId}/>
                     </div>
                 </div>
             ) )}

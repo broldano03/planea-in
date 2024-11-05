@@ -1,14 +1,15 @@
 import { useState } from "react"
 import { v4 as uuidv4 } from 'uuid'
 
-const InputItem = ({setItems}) => {
+const InputItem = ({setItems, parentId}) => {
 
     const [inputValue, setInputValue] = useState('')
 
     const addItem = (item) => {
         const newItem = {
             description: item,
-            id: uuidv4(), // ID único
+            id: uuidv4(),
+            parentId, // ID único
 
         }
 

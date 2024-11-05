@@ -5,7 +5,7 @@ import DotsIcon from './DotsIcon'
 import ShowItems from './ShowItems'
 
 // Lista de items
-const SupItems = ({ supItems, setSupItems, aspectCmi, items, setItems }) => {
+const SupItems = ({ supItems, setSupItems, aspectCmi, items, setItems}) => {
     const [draggingIndex, setDraggingIndex] = useState(null)
 
     const handleDragStart = (e, index) => {
@@ -43,10 +43,10 @@ const SupItems = ({ supItems, setSupItems, aspectCmi, items, setItems }) => {
                 {supItems.map((supItem, index) => (
                     <div key={supItem.id}>
                         <div className={`${aspectCmi.bgOkr} mb-5 py-5 mt-6 border-2
-                        border-neutral-300 rounded-md grid grid-cols-2 gap-4`}>
+                        border-neutral-300 rounded-md grid grid-cols-2 gap-4 items-center`}>
                             <div className="">
                                 
-                                <div className="px-7 border-r-2 py-5 border-neutral-300">
+                                <div className="px-7 ">
                                     <li
                                     draggable
                                     onDragStart={(evt) => handleDragStart(evt, index)}
@@ -63,15 +63,16 @@ const SupItems = ({ supItems, setSupItems, aspectCmi, items, setItems }) => {
                                         break-all text-left px-2">
                                             {supItem.description}
                                         </span>
-                                        <div className="ml-auto mr-2" >
+                                        <div className="ml-auto mr-2 " >
                                             <IconsItem />
                                         </div>
                                     </li>
                                 </div>
                             </div>
                             <div>
-                                <div className="px-7">
-                                    <ShowItems items={items} setItems={setItems}/>
+                                <div className="px-7  border-neutral-300 border-l-2 py-auto">
+                                    {/* Filtra los items específicos para el supItem actual */}
+                                    <ShowItems items={items} setItems={setItems} parentId={supItem.id}/>
                                 </div>
                             </div>
                         </div>

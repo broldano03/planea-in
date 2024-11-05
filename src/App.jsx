@@ -14,10 +14,7 @@ function App() {
   }
   ])
 
-  const [items, setItems] = useState([
-    { id:1,description: "KR 1" },
-    { id:2,description: "KR 2" },
-  ])
+  const [items, setItems] = useState([])
 
   // Función para agregar items a subItems
   const addItemsToKeyResults = () => {
