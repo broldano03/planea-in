@@ -5,12 +5,13 @@ import { v4 as uuidv4 } from 'uuid'
 
 function App() {
 
+  const [keyResults, setKeyResults] = useState([])
   const [objectives, setObjectives] = useState([
     {
       description: "Aumentar rentabilidad",
       id: uuidv4(),
       aspectCmi: "Financiero",
-      items: [{
+      keyResults: [{
         description: "Reducir costos operativos",
         id: uuidv4(),
         parentId:1, // ID único
@@ -45,12 +46,11 @@ function App() {
 }
   ])
 
-  const [items, setItems] = useState([])
-
   return (
     <>
       <AspectCmi objectives={objectives} setObjectives={setObjectives} 
-      items={items} setItems={setItems} />
+      keyResults={keyResults} setKeyResults={setKeyResults}
+      />
       
     </>
   )

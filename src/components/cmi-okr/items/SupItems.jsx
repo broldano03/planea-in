@@ -5,7 +5,7 @@ import DotsIcon from './DotsIcon'
 import ShowItems from './ShowItems'
 
 // Lista de items padre
-const SupItems = ({ supItems, setSupItems, aspectCmi, items, setItems}) => {
+const SupItems = ({ supItems, setSupItems, aspectCmi, keyResults, setKeyResults}) => {
     const [draggingIndex, setDraggingIndex] = useState(null)
 
     const handleDragStart = (e, index) => {
@@ -78,8 +78,8 @@ const SupItems = ({ supItems, setSupItems, aspectCmi, items, setItems}) => {
                             <div>
                                 <div className="px-7  border-neutral-300 border-l-2 py-auto">
                                     {/* Filtra los items específicos para el supItem actual */}
-                                    <ShowItems items={items} setItems={setItems} 
-                                    parentId={supItem.id} aspectCmi={aspectCmi} />
+                                    <ShowItems items={keyResults} setItems={setKeyResults} 
+                                    parentId={supItem.id}/>
                                 </div>
                             </div>
                         </div>
