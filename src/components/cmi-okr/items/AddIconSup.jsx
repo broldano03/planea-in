@@ -13,6 +13,8 @@ const AddIconSup = ({setSupItems, aspectCmi, parentId}) => {
         setShowInput(true)
     }
 
+    
+
     const handleBlur = (e) => {
         // Si el foco sale de `InputItem`, se oculta
         if (inputRef.current && !inputRef.current.contains(e.relatedTarget)) {
@@ -29,7 +31,8 @@ const AddIconSup = ({setSupItems, aspectCmi, parentId}) => {
         </button>
         {showInput && (
             <div ref={inputRef} tabIndex="0" onBlur={handleBlur}>
-                <InputItem setItems={setSupItems} parentId={parentId} />
+                <InputItem setItems={setSupItems} parentId={parentId} 
+                aspectCmi={aspectCmi} />
             </div>
         )}
         </>

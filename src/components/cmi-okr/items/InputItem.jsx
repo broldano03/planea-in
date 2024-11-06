@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { v4 as uuidv4 } from 'uuid'
 
-const InputItem = ({setItems, parentId}) => {
+const InputItem = ({setItems, parentId, aspectCmi}) => {
 
     const [inputValue, setInputValue] = useState('')
 
@@ -10,13 +10,13 @@ const InputItem = ({setItems, parentId}) => {
             description: item,
             id: uuidv4(),
             parentId, // ID único
-
+            aspectCmi: aspectCmi.cod,
         }
 
         setItems((prevItems) => [...prevItems, newItem])
         setInputValue('')
     }
-
+    
     const handleAddItem = () => {
         if (inputValue.trim()) {
                 addItem(inputValue)

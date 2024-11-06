@@ -7,25 +7,45 @@ function App() {
 
   const [objectives, setObjectives] = useState([
     {
-      description: "Incrementar las ventas",
-      id: uuidv4(), // ID único
+      description: "Aumentar rentabilidad",
+      id: uuidv4(),
+      aspectCmi: "Financiero",
+      items: [{
+        description: "Reducir costos operativos",
+        id: uuidv4(),
+        parentId:1, // ID único
+        aspectCmi: "Financiero",
+      },
+      {
+        description: "Minimizar gastos",
+        id: uuidv4(),
+        parentId:1, // ID único
+        aspectCmi: "Financiero",
+      },
+    ]
+
+  },
+  {
+    description: "Incrementar la tasa de mercado",
+    id: uuidv4(),
+    aspectCmi: "ClientesMercado",
+    keyResults: [{
+      description: "Incrementar tasa de satisfacción",
+      id: uuidv4(),
+      parentId:2, // ID único
       aspectCmi: "ClientesMercado",
-      keyResults: [],
-  }
+    },
+    {
+      description: "Minimizar gastos",
+      id: uuidv4(),
+      parentId:2, // ID único
+      aspectCmi: "ClientesMercado",
+    },
+  ]
+}
   ])
 
   const [items, setItems] = useState([])
-
-  // Función para agregar items a subItems
-  const addItemsToKeyResults = () => {
-    setObjectives((prevObjectives) => 
-      prevObjectives.map((obj) => ({
-        ...obj,
-        keyResults: items, // Agrega items a KR
-      }))
-    );
-  };
-
 
   return (
     <>

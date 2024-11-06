@@ -4,7 +4,7 @@ import IconsItem from './IconsItem'
 import DotsIcon from './DotsIcon'
 
 // Lista de items
-const Items = ({ items, setItems }) => {
+const Items = ({ items, setItems, aspectCmi }) => {
     const [draggingIndex, setDraggingIndex] = useState(null)
 
     const handleDragStart = (e, index) => {
@@ -35,7 +35,8 @@ const Items = ({ items, setItems }) => {
         console.log("Drag ended")
     }
 
-    
+
+
     return (
         <div>
             <ul>

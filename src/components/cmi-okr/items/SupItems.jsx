@@ -4,7 +4,7 @@ import IconsItem from './IconsItem'
 import DotsIcon from './DotsIcon'
 import ShowItems from './ShowItems'
 
-// Lista de items
+// Lista de items padre
 const SupItems = ({ supItems, setSupItems, aspectCmi, items, setItems}) => {
     const [draggingIndex, setDraggingIndex] = useState(null)
 
@@ -36,6 +36,11 @@ const SupItems = ({ supItems, setSupItems, aspectCmi, items, setItems}) => {
         console.log("Drag ended")
     }
 
+    const filterAspect = (cod) => {
+        return supItems.filter(
+            item => item.aspectCmi.cod === cod
+            )
+    }
     
     return (
         <div>
@@ -62,6 +67,7 @@ const SupItems = ({ supItems, setSupItems, aspectCmi, items, setItems}) => {
                                         <span className="block whitespace-normal break-words 
                                         break-all text-left px-2">
                                             {supItem.description}
+                                            {aspectCmi.cod}
                                         </span>
                                         <div className="ml-auto mr-2 " >
                                             <IconsItem />
@@ -72,7 +78,8 @@ const SupItems = ({ supItems, setSupItems, aspectCmi, items, setItems}) => {
                             <div>
                                 <div className="px-7  border-neutral-300 border-l-2 py-auto">
                                     {/* Filtra los items específicos para el supItem actual */}
-                                    <ShowItems items={items} setItems={setItems} parentId={supItem.id}/>
+                                    <ShowItems items={items} setItems={setItems} 
+                                    parentId={supItem.id} aspectCmi={aspectCmi} />
                                 </div>
                             </div>
                         </div>
