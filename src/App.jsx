@@ -1,17 +1,57 @@
 import { useState } from 'react'
 import './App.css'
-import InputItem from './components/InputItem'
-
+import AspectCmi from './components/cmi-okr/AspectCmi'
+import { v4 as uuidv4 } from 'uuid'
 
 function App() {
 
-  const [items, setItems] = useState({})
-  const [itemId, setItemId] = useState(0)
+  const [objectives, setObjectives] = useState([
+    {
+      description: "Aumentar rentabilidad",
+      id: uuidv4(),
+      aspectCmi: "Financiero",
+      items: [{
+        description: "Reducir costos operativos",
+        id: uuidv4(),
+        parentId:1, // ID único
+        aspectCmi: "Financiero",
+      },
+      {
+        description: "Minimizar gastos",
+        id: uuidv4(),
+        parentId:1, // ID único
+        aspectCmi: "Financiero",
+      },
+    ]
+
+  },
+  {
+    description: "Incrementar la tasa de mercado",
+    id: uuidv4(),
+    aspectCmi: "ClientesMercado",
+    keyResults: [{
+      description: "Incrementar tasa de satisfacción",
+      id: uuidv4(),
+      parentId:2, // ID único
+      aspectCmi: "ClientesMercado",
+    },
+    {
+      description: "Minimizar gastos",
+      id: uuidv4(),
+      parentId:2, // ID único
+      aspectCmi: "ClientesMercado",
+    },
+  ]
+}
+  ])
+
+  const [items, setItems] = useState([])
 
   return (
     <>
-      <h1 className='text-3xl text-red-500' >Planea.in</h1>
-      <InputItem items={items} setItems={setItems} itemId={itemId} setItemId={setItemId} />
+      <AspectCmi objectives={objectives} setObjectives={setObjectives} 
+      items={items} setItems={setItems} />
+      
     </>
   )
 }
