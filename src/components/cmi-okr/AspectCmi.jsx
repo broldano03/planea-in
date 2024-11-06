@@ -1,6 +1,6 @@
 import Okrs from "./Okrs"
 
-const AspectCmi = ({ objectives, setObjectives, items, setItems }) => {
+const AspectCmi = ({ objectives, setObjectives, keyResults, setKeyResults}) => {
 
 
     return (
@@ -13,7 +13,7 @@ const AspectCmi = ({ objectives, setObjectives, items, setItems }) => {
         </div>
         <div className="text-center">
             <Okrs objectives={objectives} setObjectives={setObjectives} 
-            items={items} setItems={setItems}/>
+            keyResults={keyResults} setKeyResults={setKeyResults}/>
         </div>
         </div>
     )

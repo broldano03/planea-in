@@ -4,7 +4,7 @@ import IconsItem from './IconsItem'
 import DotsIcon from './DotsIcon'
 
 // Lista de items
-const Items = ({ items, setItems, aspectCmi }) => {
+const Items = ({ items, setItems}) => {
     const [draggingIndex, setDraggingIndex] = useState(null)
 
     const handleDragStart = (e, index) => {

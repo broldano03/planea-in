@@ -1,30 +1,31 @@
 import { useState } from "react"
 import { v4 as uuidv4 } from 'uuid'
 
-const InputItem = ({setItems, parentId}) => {
+const InputSupItem = ({setSupItems, aspectCmi}) => {
 
     const [inputValue, setInputValue] = useState('')
 
-    const addItem = (item) => {
-        const newItem = {
+    const addSupItem = (item) => {
+        const newSupItem = {
             description: item,
             id: uuidv4(),
-            parentId,
+            aspectCmi: aspectCmi.cod,
+            keyResults: [],
         }
 
-        setItems((prevItems) => [...prevItems, newItem])
+        setSupItems((prevSupItems) => [...prevSupItems, newSupItem])
         setInputValue('')
     }
     
-    const handleAddItem = () => {
+    const handleAddSupItem = () => {
         if (inputValue.trim()) {
-                addItem(inputValue)
+                addSupItem(inputValue)
             }
         }
 
     const handleKeyDown = (e) => {
         if (e.key === 'Enter') {
-            handleAddItem()
+            handleAddSupItem()
         }
     }
 
@@ -46,4 +47,4 @@ const InputItem = ({setItems, parentId}) => {
     )
 }
 
-export default InputItem
+export default InputSupItem
