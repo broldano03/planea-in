@@ -1,9 +1,9 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import { useState, useRef} from 'react'
-import InputSupItem from './superiorItems/InputSupItem'
+import InputSupItem from './InputSupItem'
 
-const AddIconSup = ({setSupItems, aspectCmi}) => {
+const AddIconSup = ({setSupItems, aspectCmi, keyResults}) => {
 
     const [showInput, setShowInput] = useState(false)
 
@@ -32,7 +32,7 @@ const AddIconSup = ({setSupItems, aspectCmi}) => {
         {showInput && (
             <div ref={inputRef} tabIndex="0" onBlur={handleBlur}>
                 <InputSupItem setSupItems={setSupItems}
-                aspectCmi={aspectCmi} />
+                aspectCmi={aspectCmi} keyResults={keyResults}/>
             </div>
         )}
         </>

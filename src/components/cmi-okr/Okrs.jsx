@@ -1,6 +1,6 @@
-import ShowSupItems from "./items/ShowSupItems"
+import ShowSupItems from "./items/superiorItems/ShowSupItems"
 
-const Okrs = ({ objectives, setObjectives, keyResults, setKeyResults}) => {
+const Okrs = ({ objectives, setObjectives}) => {
     const aspectsCmi = [
         {
             id:1,
@@ -54,8 +54,6 @@ const Okrs = ({ objectives, setObjectives, keyResults, setKeyResults}) => {
                                 supItems={filteredObjectives} // Pasamos solo los objetivos filtrados
                                 setSupItems={setObjectives}
                                 aspectCmi={aspectCmi}
-                                keyResults={keyResults}
-                                setKeyResults={setKeyResults}
                             />
                         </div>
                     </div>
