@@ -5,51 +5,47 @@ import { v4 as uuidv4 } from 'uuid'
 
 function App() {
 
-  const [keyResults, setKeyResults] = useState([])
   const [objectives, setObjectives] = useState([
     {
       description: "Aumentar rentabilidad",
-      id: uuidv4(),
+      id: 1234,
       aspectCmi: "Financiero",
-      keyResults: [{
+      keyResults: [
+      {
         description: "Reducir costos operativos",
         id: uuidv4(),
-        parentId:1, // ID único
-        aspectCmi: "Financiero",
+        parentId:1234, // ID único
       },
       {
         description: "Minimizar gastos",
         id: uuidv4(),
-        parentId:1, // ID único
-        aspectCmi: "Financiero",
-      },
+        parentId: 1234  // ID único
+      }
     ]
-
   },
   {
     description: "Incrementar la tasa de mercado",
-    id: uuidv4(),
+    id: 456,
     aspectCmi: "ClientesMercado",
     keyResults: [{
       description: "Incrementar tasa de satisfacción",
       id: uuidv4(),
-      parentId:2, // ID único
-      aspectCmi: "ClientesMercado",
+      parentId: 456 // ID único
     },
     {
       description: "Minimizar gastos",
       id: uuidv4(),
-      parentId:2, // ID único
-      aspectCmi: "ClientesMercado",
-    },
+      parentId: 456 // ID único
+    }
   ]
 }
   ])
 
+  console.log(objectives)
+
   return (
     <>
-      <AspectCmi objectives={objectives} setObjectives={setObjectives} 
-      keyResults={keyResults} setKeyResults={setKeyResults}
+      <AspectCmi objectives={objectives} setObjectives={setObjectives}
       />
       
     </>

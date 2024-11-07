@@ -1,11 +1,11 @@
 
 import { useState } from 'react'
-import IconsItem from './IconsItem'
-import DotsIcon from './DotsIcon'
-import ShowItems from './ShowItems'
+import IconsItem from '../IconsItem'
+import DotsIcon from '../DotsIcon'
+import ShowItems from '../ShowItems'
 
 // Lista de items padre
-const SupItems = ({ supItems, setSupItems, aspectCmi, keyResults, setKeyResults}) => {
+const SupItems = ({ supItems, setSupItems, aspectCmi}) => {
     const [draggingIndex, setDraggingIndex] = useState(null)
 
     const handleDragStart = (e, index) => {
@@ -36,12 +36,15 @@ const SupItems = ({ supItems, setSupItems, aspectCmi, keyResults, setKeyResults}
         console.log("Drag ended")
     }
 
-    const filterAspect = (cod) => {
-        return supItems.filter(
-            item => item.aspectCmi.cod === cod
-            )
-    }
-    
+    console.log(supItems)
+
+    const [keyResults, setKeyResults] = useState(
+        supItems.flatMap(
+            item => item.keyResults || []
+        )
+    )
+
+
     return (
         <div>
             <ul>
@@ -67,7 +70,6 @@ const SupItems = ({ supItems, setSupItems, aspectCmi, keyResults, setKeyResults}
                                         <span className="block whitespace-normal break-words 
                                         break-all text-left px-2">
                                             {supItem.description}
-                                            {aspectCmi.cod}
                                         </span>
                                         <div className="ml-auto mr-2 " >
                                             <IconsItem />

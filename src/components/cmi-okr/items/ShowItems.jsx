@@ -5,7 +5,7 @@ import { faPlusCircle } from '@fortawesome/free-solid-svg-icons'
 import { useState, useRef } from 'react'
 
 //Mostrar items después de agregarlos
-const ShowItems = ({items, setItems ,parentId}) => {
+const ShowItems = ({items = [], setItems ,parentId}) => {
 
     const [showInput, setShowInput] = useState(false)
     const inputRef = useRef(null)
@@ -22,7 +22,7 @@ const ShowItems = ({items, setItems ,parentId}) => {
     }
 
     const filterItems = (items, parentId) => {
-        return items.filter(item => item.parentId === parentId);
+        return items.filter(item => item.parentId === parentId)
     }
 
     return (

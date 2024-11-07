@@ -5,9 +5,9 @@ const InputSupItem = ({setSupItems, aspectCmi}) => {
 
     const [inputValue, setInputValue] = useState('')
 
-    const addSupItem = (item) => {
+    const addSupItem = (supItem) => {
         const newSupItem = {
-            description: item,
+            description: supItem,
             id: uuidv4(),
             aspectCmi: aspectCmi.cod,
             keyResults: [],
