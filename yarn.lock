@@ -3208,6 +3208,7 @@ __metadata:
     react: "npm:^18.3.1"
     react-dom: "npm:^18.3.1"
     react-router-dom: "npm:^6.27.0"
+    react-use-websocket: "npm:^4.10.1"
     tailwindcss: "npm:^3.4.14"
     uuid: "npm:^11.0.2"
     vite: "npm:^5.4.10"
@@ -3398,6 +3399,13 @@ __metadata:
   peerDependencies:
     react: ">=16.8"
   checksum: 10/352e3af2075cdccf9d114b7e06d94a1b46a2147ba9d6e8643787a92464f5fd9ead950252a98d551f99f21860288bcf3a4f088cb5f46b28d1274a4e2ba24cc0f9
+  languageName: node
+  linkType: hard
+
+"react-use-websocket@npm:^4.10.1":
+  version: 4.10.1
+  resolution: "react-use-websocket@npm:4.10.1"
+  checksum: 10/162c1401a7e1cb77d2b10833c5c709ad3c4469a768ea4ff303636c05ed8302a02f23b08988bc6291acbcfa5d2a8894e0f54438860943652ebbaf238c0ba220d7
   languageName: node
   linkType: hard
 
