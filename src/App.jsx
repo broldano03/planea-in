@@ -34,7 +34,7 @@ function App() {
       parentId: 456 // ID único
     },
     {
-      description: "Minimizar gastos",
+      description: "Incrementar la tasa de recomendación",
       id: uuidv4(),
       parentId: 456 // ID único
     }
