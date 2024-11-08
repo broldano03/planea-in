@@ -3,6 +3,7 @@ import './App.css'
 import { v4 as uuidv4 } from 'uuid'
 import AspectCmi from './components/cmi-okr/cmi-okr/AspectCmi'
 import Header from './components/cmi-okr/header/Header'
+import ChatBox from "./components/chat/ChatBox.jsx";
 import Kanban from './components/kanban/Kanban'
 
 function App() {
@@ -82,7 +83,11 @@ function App() {
       <Kanban supItems={objectives}/>
       <AspectCmi objectives={objectives} setObjectives={setObjectives}
       />
-      
+
+      {/* Floating chat box */}
+      <div className="fixed bottom-2 right-2">
+        <ChatBox />
+      </div>
     </>
   )
 }
