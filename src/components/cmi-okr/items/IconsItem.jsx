@@ -1,4 +1,4 @@
-import { faCircleUser, faEllipsisVertical, faListUl} from "@fortawesome/free-solid-svg-icons"
+import { faCircleUser, faEllipsisVertical} from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import SubMain from "./SubMain"
 import { useRef, useState } from "react"
@@ -23,8 +23,6 @@ const IconsItem = ({ itemId, handleDeleteItem, handleEditItem }) => {
     return (
         <div >
             <div className="space-x-2 z-10">
-                <FontAwesomeIcon icon={faListUl} className="hover:scale-125 
-                    transition-transform transform"/>
                 <FontAwesomeIcon icon={faCircleUser} className="hover:scale-125 
                     transition-transform transform " />
                 <button onClick={toggleSubMain} >

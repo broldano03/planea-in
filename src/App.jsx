@@ -2,6 +2,7 @@ import { useState } from 'react'
 import './App.css'
 import { v4 as uuidv4 } from 'uuid'
 import AspectCmi from './components/cmi-okr/cmi-okr/AspectCmi'
+import Header from './components/cmi-okr/header/Header'
 
 function App() {
 
@@ -45,6 +46,7 @@ function App() {
 
   return (
     <>
+      <Header/>
       <AspectCmi objectives={objectives} setObjectives={setObjectives}
       />
       

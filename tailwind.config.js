@@ -10,13 +10,15 @@ export default {
         'quarter':'25%',
       },
       colors: {
-        customBlue: '#55638F',
-        customPurple: '#7D558F',
-        customGreen: '#558A8F',
-        customBrown: '#8F6455',
+        customBlue: '#000B58',
+        customPurple: '#2E073F',
+        customGreen: '#006A67',
+        customBrown: '#003161',
       }
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/forms'),
+  ],
 }
 
