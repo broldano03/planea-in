@@ -5,7 +5,6 @@
 
 body {
     background: white;
-    animation: gradientAnimation 15s ease infinite;
     display: flex;
     align-items: center;
     justify-content: center;

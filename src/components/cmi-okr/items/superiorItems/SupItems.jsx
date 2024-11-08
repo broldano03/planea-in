@@ -19,7 +19,7 @@ const SupItems = ({ supItems, setSupItems, aspectCmi}) => {
     return (
         <div>
             <ul>
-                {supItems.map((supItem, index) => (
+                {supItems.map((supItem) => (
                     <div key={supItem.id}>
                         <div className={`${aspectCmi.bgOkr} mb-5 py-5 mt-6
                         rounded-md grid grid-cols-2 gap-4 items-center`}>
