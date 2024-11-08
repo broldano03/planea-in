@@ -1,9 +1,13 @@
-import { useState } from 'react'
+import {useEffect, useState} from 'react'
 import './App.css'
 import AspectCmi from './components/cmi-okr/AspectCmi'
 import { v4 as uuidv4 } from 'uuid'
+import {WebSocketContextProvider} from "./context/WebSocketContext.jsx";
+import useWebSocket from "./hook/useWebSocket.jsx";
 
 function App() {
+  // Connect to the WebSocket server (specified at .env)
+  const ws = useWebSocket();
 
   const [objectives, setObjectives] = useState([
     {
@@ -43,12 +47,21 @@ function App() {
 
   console.log(objectives)
 
+  // Effect executed every time a message is received through the WebSocket connection
+  useEffect(() => {
+    if (!ws.lastJsonMessage) return;
+
+    const message = ws.lastJsonMessage;
+    const messageType = message.type;
+    if (messageType) {
+      console.log(`Received ${messageType} message:`, message);
+    }
+  }, [ ws.lastJsonMessage ]);
+
   return (
-    <>
-      <AspectCmi objectives={objectives} setObjectives={setObjectives}
-      />
-      
-    </>
+    <WebSocketContextProvider ws={ws}>
+      <AspectCmi objectives={objectives} setObjectives={setObjectives} />
+    </WebSocketContextProvider>
   )
 }
 
