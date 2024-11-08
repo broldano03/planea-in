@@ -1,0 +1,6 @@
+.sub-main-position {
+    position: absolute;
+    z-index: 50;
+    top: var(--sub-main-top);
+    left: var(--sub-main-left);
+}

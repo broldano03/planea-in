@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './App.css'
-import AspectCmi from './components/cmi-okr/AspectCmi'
 import { v4 as uuidv4 } from 'uuid'
+import AspectCmi from './components/cmi-okr/cmi-okr/AspectCmi'
 
 function App() {
 

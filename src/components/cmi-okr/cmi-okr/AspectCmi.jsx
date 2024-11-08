@@ -1,9 +1,11 @@
 import Okrs from "./Okrs"
 
+
 const AspectCmi = ({ objectives, setObjectives}) => {
 
 
     return (
+        
         <div className="aspects">
         <div className="pb-8">
             <h1 className="text-center text-black font-bold uppercase text-xl">

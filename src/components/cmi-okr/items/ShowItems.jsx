@@ -26,10 +26,10 @@ const ShowItems = ({items = [], setItems ,parentId}) => {
     }
 
     return (
-        <div className='text-center items-center' >
+        <div className='text-center items-center z-10' >
             {/* Filtra los items por el parentId proporcionado */}
             <Items items={filterItems(items, parentId)} setItems={setItems}/>
-            <button onClick={toggleInputVisibility} className="text-xl">
+            <button onClick={toggleInputVisibility} className="text-xl z-10">
                 <FontAwesomeIcon icon={faPlusCircle} className="text-neutral-400 hover:scale-125 
                 transition-transform transform" />
             </button>

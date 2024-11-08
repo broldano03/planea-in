@@ -1,4 +1,4 @@
-import ShowSupItems from "./items/superiorItems/ShowSupItems"
+import ShowSupItems from "../items/superiorItems/ShowSupItems"
 
 const Okrs = ({ objectives, setObjectives}) => {
     const aspectsCmi = [
@@ -41,7 +41,7 @@ const Okrs = ({ objectives, setObjectives}) => {
                 )
 
                 return (
-                    <div key={aspectCmi.id}>
+                    <div key={aspectCmi.id} className="z-10" >
                         <div className={`${aspectCmi.color} text-white px-8 py-2 justify-center inline-block rounded-md`}>
                             <h2 className="uppercase font-bold">{aspectCmi.title}</h2>
                         </div>

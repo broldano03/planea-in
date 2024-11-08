@@ -36,9 +36,8 @@ const Items = ({ items, setItems}) => {
     }
 
 
-
     return (
-        <div>
+        <div> 
             <ul>
                 {items.map((item, index) => (
                     <li
@@ -49,8 +48,8 @@ const Items = ({ items, setItems}) => {
                         onDragEnd={handleDragEnd}
                         className={`bg-white cursor-pointer my-3 rounded-[15px] 
                                 text-center p-2 shadow-md transition-transform 
-                                transform hover:scale-105 flex items-center 
-                                ${draggingIndex === index ? 'bg-blue-400' : ''} `}
+                                hover:bg-gray-100 flex items-center 
+                                ${draggingIndex === index ? 'bg-blue-400' : ''} z-10`}
                     >
                         <DotsIcon/>
                         <span className="block whitespace-normal break-words">
