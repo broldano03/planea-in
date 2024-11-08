@@ -1,4 +1,3 @@
-
 import { useState } from 'react'
 import IconsItem from '../IconsItem'
 import DotsIcon from '../DotsIcon'
@@ -11,7 +10,6 @@ const SupItems = ({ supItems, setSupItems, aspectCmi}) => {
     const handleDragStart = (e, index) => {
         e.dataTransfer.setData('dragIndex', index)
         setDraggingIndex(index)
-        console.log(`Started dragging item at index ${index}`)
     }
 
     const handleDrop = (e, dropIndex) => {
@@ -33,10 +31,7 @@ const SupItems = ({ supItems, setSupItems, aspectCmi}) => {
 
     const handleDragEnd = () => {
         setDraggingIndex(null)
-        console.log("Drag ended")
     }
-
-    console.log(supItems)
 
     const [keyResults, setKeyResults] = useState(
         supItems.flatMap(
@@ -44,6 +39,9 @@ const SupItems = ({ supItems, setSupItems, aspectCmi}) => {
         )
     )
 
+    const handleDeleteItem = (id) => {
+        setSupItems((prevItems) => prevItems.filter(supItem => supItem.id !== id));
+    }
 
     return (
         <div>
@@ -72,7 +70,8 @@ const SupItems = ({ supItems, setSupItems, aspectCmi}) => {
                                             {supItem.description}
                                         </span>
                                         <div className="ml-auto mr-2 " >
-                                            <IconsItem />
+                                            <IconsItem itemId={supItem.id} 
+                                            handleDeleteItem={handleDeleteItem} />
                                         </div>
                                     </li>
                                 </div>

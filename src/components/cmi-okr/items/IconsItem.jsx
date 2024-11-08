@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import SubMain from "./SubMain"
 import { useRef, useState } from "react"
 
-const IconsItem = () => {
+const IconsItem = ({ itemId, handleDeleteItem, handleEditItem }) => {
 
     const [isSubMainVisible, setIsSubMainVisible] = useState(false)
     const buttonRef = useRef(null)
@@ -42,7 +42,9 @@ const IconsItem = () => {
                     onBlur={() => setIsSubMainVisible(false)}
                     className="sub-main-position rounded-md w-max"
                 >
-                    <SubMain />
+                    <SubMain itemId={itemId} 
+                    handleDeleteItem={handleDeleteItem} 
+                    handleEditItem={handleEditItem} />
                 </div>
             )}
         </div>
