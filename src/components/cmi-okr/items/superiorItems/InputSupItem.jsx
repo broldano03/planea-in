@@ -10,7 +10,7 @@ const InputSupItem = ({setSupItems, aspectCmi}) => {
             description: supItem,
             id: uuidv4(),
             aspectCmi: aspectCmi.cod,
-            keyResults: [],
+            supItemsChildren: [],
         }
 
         setSupItems((prevSupItems) => [...prevSupItems, newSupItem])

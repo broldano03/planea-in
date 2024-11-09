@@ -1,16 +1,12 @@
-import { useState } from 'react'
 import IconsItem from '../IconsItem'
 import DotsIcon from '../DotsIcon'
 import ShowItems from '../ShowItems'
+import { useKeyResults } from '../../../../context/KeyResultsContext'
 
 // Lista de items padre
 const SupItems = ({ supItems, setSupItems, aspectCmi}) => {
 
-    const [keyResults, setKeyResults] = useState(
-        supItems.flatMap(
-            supItem => supItem.keyResults || []
-        )
-    )
+    const { keyResults, setKeyResults } = useKeyResults()
 
     const handleDeleteItem = (id) => {
         setSupItems((prevItems) => prevItems.filter(supItem => supItem.id !== id));
@@ -48,7 +44,7 @@ const SupItems = ({ supItems, setSupItems, aspectCmi}) => {
                                 <div className="px-7  border-neutral-300 border-l-2 py-auto">
                                     {/* Filtra los items específicos para el supItem actual */}
                                     <ShowItems items={keyResults} setItems={setKeyResults} 
-                                    parentId={supItem.id}/>
+                                    parentId={supItem.id} aspectCmi={supItem.aspectCmi} />
                                 </div>
                             </div>
                         </div>

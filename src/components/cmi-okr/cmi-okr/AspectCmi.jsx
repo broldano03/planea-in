@@ -4,6 +4,7 @@ const AspectCmi = ({ objectives, setObjectives}) => {
 
     return (
         <div className="aspects mx-20">
+            
             <div className="pb-8">
                 <h1 className="text-center  text-neutral-900 font-bold uppercase text-2xl">
                     Cuadro de Mando Integral
