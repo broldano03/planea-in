@@ -1,10 +1,8 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
-import { useKeyResults } from './KeyResultsContext';
+import React, { createContext, useContext, useState } from 'react';
 
 const OperationalPlansContext = createContext();
 
 export const OperationalPlansProvider = ({ children }) => {
-    const { keyResults } = useKeyResults();
 
     // Estado inicial de operationalPlans
     const [operationalPlans, setOperationalPlans] = useState([
@@ -30,17 +28,12 @@ export const OperationalPlansProvider = ({ children }) => {
         },
     ])
 
-    // Filtra operationalPlans por keyResults si es necesario
-    const filteredOperationalPlans = operationalPlans.filter(plan =>
-        keyResults.some(kr => kr.id === plan.keyResultId)
-    )
-
     return (
-        <OperationalPlansContext.Provider value={{ operationalPlans: filteredOperationalPlans, setOperationalPlans }}>
+        <OperationalPlansContext.Provider value={{ operationalPlans, setOperationalPlans }}>
             {children}
         </OperationalPlansContext.Provider>
-    );
-};
+    )
+}
 
 // Hook personalizado para acceder al contexto
 export const useOperationalPlans = () => useContext(OperationalPlansContext)
