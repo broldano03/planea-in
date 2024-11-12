@@ -5,27 +5,18 @@ import './index.css'
 import App from './App.jsx'
 import Kanban from './components/kanban/Kanban.jsx'
 import Template from './components/main/Template.jsx'
-import { KeyResultsProvider } from './context/KeyResultsContext.jsx'
-import { AspectsProvider } from './context/AspectsContext.jsx'
-import { ObjectivesProvider } from './context/ObjectivesContext.jsx'
-import { OperationalPlansProvider } from './context/OperationalPlansContext.jsx'
+import { ItemsProvider } from './context/ItemsContext.jsx'
 
 createRoot(document.getElementById('root')).render(
     <BrowserRouter>
-            <AspectsProvider>
-                    <KeyResultsProvider>
-                        <ObjectivesProvider>
-                            <OperationalPlansProvider>
-                                <Routes>
-                                    <Route path="/" element={<Template/>}>
-                                        <Route index element={<App/>} />
-                                        <Route path="/cuadro-de-mando" element={<App/>} />
-                                        <Route path="/tablero-kanban" element={<Kanban />} />
-                                    </Route>
-                                </Routes>
-                            </OperationalPlansProvider>
-                        </ObjectivesProvider>
-                    </KeyResultsProvider>
-            </AspectsProvider>
+            <ItemsProvider>
+                <Routes>
+                    <Route path="/" element={<Template/>}>
+                        <Route index element={<App/>} />
+                        <Route path="/cuadro-de-mando" element={<App/>} />
+                        <Route path="/tablero-kanban" element={<Kanban />} />
+                    </Route>
+                </Routes>
+            </ItemsProvider>
     </BrowserRouter>
 )

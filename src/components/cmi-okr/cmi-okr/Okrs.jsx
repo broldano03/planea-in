@@ -1,37 +1,55 @@
-import { useAspects } from "../../../context/AspectsContext"
-import ShowSupItems from "../items/superiorItems/ShowSupItems"
+import { useItems } from "../../../context/ItemsContext"
+import IconsItem from "../items/IconsItem"
+import Items from "../items/Items"
+import ShowItems from "../items/ShowItems"
 
-const Okrs = ({ objectives, setObjectives}) => {
+const Okrs = ({aspectCmi}) => {
     
-    const aspectsCmi = useAspects()
+    const { aspectsCmi } = useItems()
 
+    const objectives = aspectsCmi
+        .filter((aspect) => aspect.cod === aspectCmi.cod)
+        .flatMap((aspect) => aspect.objectives)
+    
     return (
         <>
-            {aspectsCmi.map( aspectCmi => {
-                // Filtramos los objetivos para que solo se muestren los que tengan el mismo `aspectCmi`
-                const filteredObjectives = objectives.filter(
-                    (objective) => objective.aspectCmi === aspectCmi.cod
-                )
-
+        <ul>
+            {objectives.map((objective) => {
+                const keyResults = objective.keyResults
                 return (
-                    <div key={aspectCmi.id} className="z-10" >
-                        <div className={`${aspectCmi.color} text-white px-8 py-2 justify-center shadow-md inline-block rounded-md `}>
-                            <h2 className="uppercase font-bold">{aspectCmi.title}</h2>
-                        </div>
-                        <div className="semi-blue pt-3 px-8 -mt-4 mb-10 shadow-md rounded-md">
-                            <div className="grid grid-cols-2 gap-4 mt-3 uppercase font-bold text-center">
-                                <h3>Objetivo</h3>
-                                <h3>Resultados Clave</h3>
+                <div key={objective.id}>
+                    <div className={`${aspectCmi.bgOkr} mb-5 py-5 mt-6
+                    rounded-md grid grid-cols-2 gap-4 items-center`}>
+                        <div className="">
+                            
+                            <div className="px-7 ">
+                                <li
+                                className={`bg-white cursor-pointer my-3 rounded-[15px] 
+                                        text-center p-2 shadow-md transition-transform 
+                                        transform hover:scale-105 flex items-center 
+                                        `}
+                                >
+                                    <span className="block whitespace-normal break-words 
+                                    break-all text-left px-2">
+                                        {objective.description}
+                                    </span>
+                                    <div className="ml-auto mr-2 " >
+                                        <IconsItem />
+                                    </div>
+                                </li>
                             </div>
-                            <ShowSupItems
-                                supItems={filteredObjectives} // Pasamos solo los objetivos filtrados
-                                setSupItems={setObjectives}
-                                aspectCmi={aspectCmi}
-                            />
+                        </div>
+                        <div>
+                            <div className="px-7  border-neutral-300 border-l-2 py-auto">
+                                <Items items={keyResults}/>
+                                <ShowItems/>
+                            </div>
+                            
                         </div>
                     </div>
-                )
-            })}
+                </div>
+            )})}
+        </ul>
         </>
     )
 }

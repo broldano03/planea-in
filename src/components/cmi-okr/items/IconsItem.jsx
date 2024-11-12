@@ -1,9 +1,9 @@
-import { faUserTie, faSliders} from "@fortawesome/free-solid-svg-icons"
+import { faSliders} from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import SubMain from "./SubMain"
 import { useRef, useState } from "react"
 
-const IconsItem = ({ itemId, handleDeleteItem }) => {
+const IconsItem = () => {
 
     const [isSubMainVisible, setIsSubMainVisible] = useState(false)
     const buttonRef = useRef(null)
@@ -39,8 +39,7 @@ const IconsItem = ({ itemId, handleDeleteItem }) => {
                     onBlur={() => setIsSubMainVisible(false)}
                     className="sub-main-position rounded-md w-max"
                 >
-                    <SubMain itemId={itemId} 
-                    handleDeleteItem={handleDeleteItem} />
+                    <SubMain />
                 </div>
             )}
         </div>

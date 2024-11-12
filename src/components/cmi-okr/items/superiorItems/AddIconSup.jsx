@@ -3,7 +3,7 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import { useState, useRef} from 'react'
 import InputSupItem from './InputSupItem'
 
-const AddIconSup = ({setSupItems, aspectCmi, keyResults}) => {
+const AddIconSup = ({aspectCmi}) => {
 
     const [showInput, setShowInput] = useState(false)
 
@@ -12,8 +12,6 @@ const AddIconSup = ({setSupItems, aspectCmi, keyResults}) => {
     const toggleInputVisibility = () => {
         setShowInput(true)
     }
-
-    
 
     const handleBlur = (e) => {
         // Si el foco sale de `InputItem`, se oculta
@@ -31,8 +29,7 @@ const AddIconSup = ({setSupItems, aspectCmi, keyResults}) => {
         </button>
         {showInput && (
             <div ref={inputRef} tabIndex="0" onBlur={handleBlur}>
-                <InputSupItem setSupItems={setSupItems}
-                aspectCmi={aspectCmi} keyResults={keyResults}/>
+                <InputSupItem/>
             </div>
         )}
         </>

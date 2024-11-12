@@ -1,10 +1,16 @@
-import React from "react";
-import { useKeyResults } from "../../context/KeyResultsContext";
-import LabelCmi from "../cmi-okr/cmi-okr/LabelCmi";
-import IconsItem from "../cmi-okr/items/IconsItem";
+import React, { useState } from "react"
+import LabelCmi from "../cmi-okr/cmi-okr/LabelCmi"
+import IconsItem from "../cmi-okr/items/IconsItem"
+import { useItems } from "../../context/ItemsContext"
 
 const Kanban = () => {
-    const { keyResults, setKeyResults } = useKeyResults()
+
+    const { aspectsCmi } = useItems()
+
+    const objectives = aspectsCmi
+        .flatMap((aspect) => aspect.objectives)
+    
+    const [keyResults, setKeyResults] = useState(objectives.keyResults)
 
     // Estado temporal para almacenar el ID del elemento que se arrastra
     const [draggedItemId, setDraggedItemId] = React.useState(null)

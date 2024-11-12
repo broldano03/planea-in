@@ -1,8 +1,8 @@
-import { useAspects } from "../../../context/AspectsContext"
+import { useItems } from "../../../context/ItemsContext"
 
 const LabelCmi = ({aspectCmi}) => {
 
-    const aspectsCmi = useAspects()
+    const aspectsCmi = useItems()
 
     // Buscar el aspecto correspondiente usando el cod
     const selectedAspect = aspectsCmi.find(aspect => aspect.cod === aspectCmi)
