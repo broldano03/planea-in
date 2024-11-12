@@ -115,8 +115,8 @@ const Kanban = () => {
                 </div>
             </div>
         </div>
-    );
-};
+    )
+}
 
 export default Kanban
 

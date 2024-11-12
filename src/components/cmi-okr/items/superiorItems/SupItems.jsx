@@ -1,5 +1,4 @@
 import IconsItem from '../IconsItem'
-import DotsIcon from '../DotsIcon'
 import ShowItems from '../ShowItems'
 import { useKeyResults } from '../../../../context/KeyResultsContext'
 
@@ -28,7 +27,6 @@ const SupItems = ({ supItems, setSupItems, aspectCmi}) => {
                                             transform hover:scale-105 flex items-center 
                                             `}
                                     >
-                                        <DotsIcon/>
                                         <span className="block whitespace-normal break-words 
                                         break-all text-left px-2">
                                             {supItem.description}
