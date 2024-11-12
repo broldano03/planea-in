@@ -1,4 +1,4 @@
-import { faArrowUp19, faPenToSquare, faTrash, faList, faUser, faCalendar, faBarsStaggered } from "@fortawesome/free-solid-svg-icons"
+import { faArrowUp19, faPenToSquare, faTrash, faList, faUser, faCalendar, faBarsStaggered, faWindowMaximize } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useState } from "react"
 import { useOperationalPlans } from "../../../context/OperationalPlansContext"
@@ -22,6 +22,11 @@ const SubMain = ({ itemId, handleDeleteItem, handleEditItem }) => {
         <div className="bg-white rounded-md p-3 shadow-lg z-50 text-left ">
             <div className="rounded-md px-2 py-2 cursor-pointer
             hover:bg-gray-100" >
+                <FontAwesomeIcon icon={faWindowMaximize} />
+                <span className="ml-2"> Abrir detalles </span>
+            </div>
+            <div className="rounded-md px-2 py-2 cursor-pointer
+            hover:bg-gray-100">
                 <FontAwesomeIcon icon={faArrowUp19} />
                 <span className="ml-2"> Asignar meta - KPI </span>
             </div>

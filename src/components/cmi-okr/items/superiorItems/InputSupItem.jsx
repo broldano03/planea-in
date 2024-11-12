@@ -1,33 +1,14 @@
-import { useState } from "react"
-import { v4 as uuidv4 } from 'uuid'
+import { handleAddItemHelper } from "../../../../helpers/handleAddItem"
+import { handleKeyDownHelper } from "../../../../helpers/handleKeyDown"
+import useAddSupItem from "../../../../hook/useAddSupItem"
 
 const InputSupItem = ({setSupItems, aspectCmi}) => {
 
-    const [inputValue, setInputValue] = useState('')
+    const { inputValue, setInputValue, addItem } = useAddSupItem(aspectCmi, setSupItems)
 
-    const addSupItem = (supItem) => {
-        const newSupItem = {
-            description: supItem,
-            id: uuidv4(),
-            aspectCmi: aspectCmi.cod,
-            supItemsChildren: [],
-        }
+    const handleAddItem = () => { handleAddItemHelper(inputValue, addItem) }
 
-        setSupItems((prevSupItems) => [...prevSupItems, newSupItem])
-        setInputValue('')
-    }
-    
-    const handleAddSupItem = () => {
-        if (inputValue.trim()) {
-                addSupItem(inputValue)
-            }
-        }
-
-    const handleKeyDown = (e) => {
-        if (e.key === 'Enter') {
-            handleAddSupItem()
-        }
-    }
+    const handleKeyDown = (e) => { handleKeyDownHelper(e, handleAddItem) }
 
     return (
         <>
@@ -40,8 +21,7 @@ const InputSupItem = ({setSupItems, aspectCmi}) => {
                 placeholder="Redacta aquí"
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
-                onKeyDown={handleKeyDown} /> 
-            
+                onKeyDown={handleKeyDown} />
         </div>
         </>
     )

@@ -1,9 +1,9 @@
-import { faCircleUser, faEllipsisVertical} from "@fortawesome/free-solid-svg-icons"
+import { faUserTie, faSliders} from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import SubMain from "./SubMain"
 import { useRef, useState } from "react"
 
-const IconsItem = ({ itemId, handleDeleteItem, handleEditItem }) => {
+const IconsItem = ({ itemId, handleDeleteItem }) => {
 
     const [isSubMainVisible, setIsSubMainVisible] = useState(false)
     const buttonRef = useRef(null)
@@ -23,10 +23,9 @@ const IconsItem = ({ itemId, handleDeleteItem, handleEditItem }) => {
     return (
         <div >
             <div className="space-x-2 z-10">
-                <FontAwesomeIcon icon={faCircleUser} className="hover:scale-125 
-                    transition-transform transform " />
+                
                 <button onClick={toggleSubMain} >
-                    <FontAwesomeIcon icon={faEllipsisVertical} className="hover:scale-125 
+                    <FontAwesomeIcon icon={faSliders} className="hover:scale-125 
                     transition-transform transform" 
                     />
                 </button>
@@ -41,8 +40,7 @@ const IconsItem = ({ itemId, handleDeleteItem, handleEditItem }) => {
                     className="sub-main-position rounded-md w-max"
                 >
                     <SubMain itemId={itemId} 
-                    handleDeleteItem={handleDeleteItem} 
-                    handleEditItem={handleEditItem} />
+                    handleDeleteItem={handleDeleteItem} />
                 </div>
             )}
         </div>

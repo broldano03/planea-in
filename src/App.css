@@ -4,3 +4,37 @@
     top: var(--sub-main-top);
     left: var(--sub-main-left);
 }
+
+body {
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, sans-serif;
+}
+
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.light-blue {
+    background-color: #ececf2;
+}
+
+.semi-blue {
+    background-color: #f6f6f6;
+}
+
+.light-purple {
+    background-color: #f1edf3;
+}
+
+.light-green {
+    background-color: #e6eeee;
+}
+
+.light-brown {
+    background-color: #f3f9fe;
+}
