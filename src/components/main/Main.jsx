@@ -1,6 +1,9 @@
-import { NavLink } from "react-router-dom"
+import {NavLink, useNavigate} from "react-router-dom"
+import {unsetToken} from "../../lib/authenticate.js";
 
 const Main = () => {
+    const navigate = useNavigate();
+
     return (
         <nav className="flex space-x-6 px-10 mx-10 text-center items-center cursor-pointer"> 
             <NavLink
@@ -35,14 +38,12 @@ const Main = () => {
             >
                 Matriz Eisenhower
             </NavLink>
-            <NavLink
-                to="/"
-                className={({ isActive }) =>
-                    isActive ? "text-blue-500 font-bold" : "text-white"
-                }
-            >
-                Cerrar Sesión
-            </NavLink>
+            <span className="text-white" onClick={() => {
+              unsetToken();
+              navigate('/login');
+            }}>
+              Cerrar Sesión
+            </span>
         </nav>
     );
 };

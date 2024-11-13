@@ -20,11 +20,7 @@ export default function useWebSocket(options /*: WebSocketOptions */) /*: WebSoc
                     }
                     return;
                 }
-                // No auth yet
-                _hook.sendJsonMessage({
-                    type: 'login',
-                    body: 'no auth yet'
-                });
+                _hook.sendJsonMessage({ type: 'login', body: token });
                 console.log('Successfully connected to web-socket server');
             },
             reconnectAttempts: 10_000,
@@ -43,17 +39,12 @@ export default function useWebSocket(options /*: WebSocketOptions */) /*: WebSoc
     }
 
     function sendAuthenticatedMessage(message /*: ServerBoundMessage<any>*/) {
-        // No auth yet!
-        /*const token = getToken();
+        const token = getToken();
         if (!token) {
-            // TODO: Handle
             console.error('Token expired?');
             return;
-        }*/
-        sendMessage({
-            ...message,
-            accessToken: 'no auth yet'
-        });
+        }
+        sendMessage({ ...message, accessToken: token });
     }
 
     return {
