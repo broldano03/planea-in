@@ -35,10 +35,10 @@ const Kanban = () => {
     const doneItems = keyResults.filter((item) => item.statusKanban === "Hecho")
 
     return (
-        <div className="flex px-20 space-x-5">
+        <div className="flex px-20 space-x-5 ">
             
             <div
-                className="bg-neutral-100 px-8 py-6 rounded-md flex-1"
+                className="border-red-600 border-4 bg-neutral-100 px-8 py-6 rounded-md flex-1"
                 onDrop={() => handleDrop("Pendiente")}
                 onDragOver={allowDrop}
             >
@@ -54,6 +54,7 @@ const Kanban = () => {
                             className="px-3 pt-4 pb-5 bg-white rounded-md mb-2 cursor-pointer 
                             flex flex-col"
                         >
+                            <LabelCmi keyResultId={item.id} />
                             <div className="mt-2 mb-2 ">
                                 {item.description}
                             </div>
@@ -79,7 +80,7 @@ const Kanban = () => {
                             className="px-3 pt-4 pb-5 bg-white rounded-md mb-2 cursor-pointer 
                             flex flex-col"
                         >
-
+                            <LabelCmi keyResultId={item.id} />
                             <div className="mt-2 mb-2">
                                 {item.description}
                             </div>
@@ -105,7 +106,7 @@ const Kanban = () => {
                             className="px-3 pt-4 pb-5 bg-white rounded-md mb-2 cursor-pointer 
                             flex flex-col"
                         >
-
+                            <LabelCmi keyResultId={item.id} />
                             <div className="mt-2 mb-2">
                                 {item.description}
                             </div>
