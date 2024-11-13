@@ -22,7 +22,7 @@ export const ItemsProvider = ({ children }) => {
                         {
                             description: "Incrementar el margen bruto del 45% al 55% al optimizar los costos de producción.",
                             id: 4277,
-                            statusKanban: "En-Proceso",
+                            statusKanban: "Hecho",
                             importance: false,
                             urgency: true,
                             startDate: "",
@@ -197,13 +197,21 @@ export const ItemsProvider = ({ children }) => {
         }
     ])
 
-    // Proporcionar tanto los objetivos como la función para actualizarlos
+    const [keyResults, setKeyResults] = useState (aspectsCmi?.flatMap(aspect =>
+        aspect.objectives?.flatMap(objective => objective.keyResults || [])
+    ) || [])
+
     return (
-        <ItemsContext.Provider value={{ aspectsCmi, setAspectsCmi }}>
+        <ItemsContext.Provider
+            value={{
+                aspectsCmi, setAspectsCmi,
+                keyResults, setKeyResults
+                }}
+        >
             {children}
         </ItemsContext.Provider>
     )
 }
-
-// Hook personalizado para acceder al contexto
-export const useItems = () => useContext(ItemsContext)
+    
+    // Hook personalizado para acceder al contexto
+    export const useItems = () => useContext(ItemsContext);

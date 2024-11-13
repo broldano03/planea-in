@@ -5,12 +5,7 @@ import { useItems } from "../../context/ItemsContext"
 
 const Kanban = () => {
 
-    const { aspectsCmi } = useItems()
-
-    const objectives = aspectsCmi
-        .flatMap((aspect) => aspect.objectives)
-    
-    const [keyResults, setKeyResults] = useState(objectives.keyResults)
+    const { keyResults, setKeyResults } = useItems()
 
     // Estado temporal para almacenar el ID del elemento que se arrastra
     const [draggedItemId, setDraggedItemId] = React.useState(null)
@@ -59,7 +54,6 @@ const Kanban = () => {
                             className="px-3 pt-4 pb-5 bg-white rounded-md mb-2 cursor-pointer 
                             flex flex-col"
                         >
-                            <LabelCmi aspectCmi={item.aspectCmi} />
                             <div className="mt-2 mb-2 ">
                                 {item.description}
                             </div>
@@ -85,7 +79,7 @@ const Kanban = () => {
                             className="px-3 pt-4 pb-5 bg-white rounded-md mb-2 cursor-pointer 
                             flex flex-col"
                         >
-                            <LabelCmi aspectCmi={item.aspectCmi} />
+
                             <div className="mt-2 mb-2">
                                 {item.description}
                             </div>
@@ -111,7 +105,7 @@ const Kanban = () => {
                             className="px-3 pt-4 pb-5 bg-white rounded-md mb-2 cursor-pointer 
                             flex flex-col"
                         >
-                            <LabelCmi aspectCmi={item.aspectCmi} />
+
                             <div className="mt-2 mb-2">
                                 {item.description}
                             </div>
