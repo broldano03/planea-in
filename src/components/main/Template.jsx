@@ -3,6 +3,7 @@ import Header from "../cmi-okr/header/Header"
 import useWebSocket from "../../hook/useWebSocket.jsx";
 import {useEffect, useState} from "react";
 import {unsetToken} from "../../lib/authenticate.js";
+import {WebSocketContextProvider} from "../../context/WebSocketContext.jsx";
 
 const Template = () => {
     const navigate = useNavigate();
@@ -12,7 +13,7 @@ const Template = () => {
   function logout() {
     unsetToken();
     setUser(null);
-    navigate('/');
+    navigate('/login');
   }
 
   useEffect(() => {
@@ -23,25 +24,32 @@ const Template = () => {
       case 'loginSuccess': {
         const user = message.body.user;
         setUser(user);
+
         console.log(`Successfully logged in as '${user.name}'`)
+
+        // request organization information
+        ws.sendAuthenticatedMessage({ type: 'fetchInstance', body: 'devintio' });
         break;
       }
       case 'error': {
-        if (message.body.error === 'Invalid authentication token') {
+        if (message.body.error === 'Invalid access token') {
           logout();
         } else {
           console.error(message.body);
         }
         break;
       }
+      default: {
+        console.log(`Unhandled message type: '${message.type}' with body: `, message.body);
+      }
     }
   }, [ ws.lastJsonMessage ]);
 
     return (
-        <>
+        <WebSocketContextProvider ws={ws}>
             <Header/>
             <Outlet/>
-        </>
+        </WebSocketContextProvider>
     )
 }
 

@@ -44,10 +44,7 @@ export default function useWebSocket(options /*: WebSocketOptions */) /*: WebSoc
             console.error('Token expired?');
             return;
         }
-        sendMessage({
-            ...message,
-            accessToken: 'no auth yet'
-        });
+        sendMessage({ ...message, accessToken: token });
     }
 
     return {
