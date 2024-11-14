@@ -1,18 +1,59 @@
 import { useState } from "react"
 import { useItems } from "../../context/ItemsContext"
-import LabelCmi from "../cmi-okr/cmi-okr/LabelCmi"
-import IconsItem from "../cmi-okr/items/IconsItem"
+import CardEisen from "./CardEisen"
+import TitleEisen from "./TitleEisen"
 
 const Eisenhower = () => {
 
-    const {keyResults, projects, actions, tasks } = useItems()
+    const { keyResults, setKeyResults, projects, setProjects, actions, setActions, tasks, setTasks } = useItems()
     const [selectedCategory, setSelectedCategory] = useState('keyResults')
+    const [draggedItemId, setDraggedItemId] = useState(null)
 
     const filterByImportanceAndUrgency = (items, importance, urgency) => {
         return items.filter(item => 
             (importance === undefined || item.importance === importance) &&
             (urgency === undefined || item.urgency === urgency)
         )
+    }
+
+    const handleDragStart = (e, itemId) => {
+        setDraggedItemId(itemId)
+    }
+
+    const updateDraggedItem = (newImportance, newUrgency) => {
+        const updateItems = (items, setItems) => {
+            const updatedItems = items.map(item => 
+                item.id === draggedItemId ? { ...item, importance: newImportance, urgency: newUrgency } : item
+            )
+            setItems(updatedItems);
+        }
+
+        switch (selectedCategory) {
+            case 'keyResults':
+                updateItems(keyResults, setKeyResults);
+                break;
+            case 'projects':
+                updateItems(projects, setProjects);
+                break;
+            case 'actions':
+                updateItems(actions, setActions);
+                break;
+            case 'tasks':
+                updateItems(tasks, setTasks);
+                break;
+            default:
+                break;
+        }
+    }
+
+    const handleDrop = (e, newImportance, newUrgency) => {
+        e.preventDefault();
+        updateDraggedItem(newImportance, newUrgency);
+        setDraggedItemId(null);
+    }
+
+    const handleDragOver = (e) => {
+        e.preventDefault();
     }
 
     const impAndUrg = (items) => filterByImportanceAndUrgency(items, true, true)
@@ -25,6 +66,7 @@ const Eisenhower = () => {
                         selectedCategory === 'actions' ? actions :
                         tasks
 
+    const cssBoard = "flex-1 rounded-md p-6"
     return (
         <>
         {/* Selector de categoría */}
@@ -46,39 +88,25 @@ const Eisenhower = () => {
             <div className="flex gap-4 py-4 px-20 w-full">
 
                 {/* Cuadrantes */}
-                <div className="flex-1 rounded-md p-6 bg-slate-300 w-[50%]">
-                    <h3 className="font-bold text-xl">Urgente e Importante</h3>
-                    <p className="uppercase italic pb-3">Hacer ahora</p>
+                <div 
+                    className={`${cssBoard} bg-slate-300`}
+                    onDragOver={handleDragOver}
+                    onDrop={(e) => handleDrop(e, true, true)}
+                >
+                    <TitleEisen titleEisen="Urgente e Importante" subtitleEisen="Hacer ahora" />
                     {impAndUrg(selectedItems).map((item) => (
-                        <div
-                            key={item.id}
-                            className="px-6 pt-4 pb-5 bg-white rounded-md mb-2 cursor-pointer 
-                            flex flex-col"
-                        >
-                            <LabelCmi keyResultId={item.id} />
-                            <div className="mt-2 mb-2 ">
-                                {item.description}
-                            </div>
-                            <IconsItem/>
-                        </div>
+                        <CardEisen itemId={item.id} description={item.description} handleDragStart={handleDragStart} />
                     ))}
                 </div>
 
-                <div className="flex-1 rounded-md p-6 bg-slate-200 w-[50%]">
-                    <h3 className="font-bold text-xl">No Urgente e Importante</h3>
-                    <p className="uppercase italic pb-3">Planificar</p>
+                <div 
+                    className={`${cssBoard} bg-slate-200`}
+                    onDragOver={handleDragOver}
+                    onDrop={(e) => handleDrop(e, true, false)}
+                >
+                    <TitleEisen titleEisen="No Urgente e Importante" subtitleEisen="Planificar" />
                     {impAndNoUrg(selectedItems).map((item) => (
-                        <div
-                            key={item.id}
-                            className="px-6 pt-4 pb-5 bg-white rounded-md mb-2 cursor-pointer 
-                            flex flex-col"
-                        >
-                            <LabelCmi keyResultId={item.id} />
-                            <div className="mt-2 mb-2 ">
-                                {item.description}
-                            </div>
-                            <IconsItem/>
-                        </div>
+                        <CardEisen itemId={item.id} description={item.description} handleDragStart={handleDragStart}  />
                     ))}
                 </div>
             </div>
@@ -86,40 +114,24 @@ const Eisenhower = () => {
 
         <div className="flex items-center flex-1 w-full">
             <div className="flex gap-4 py-4 px-20 w-full">
-
-                {/* Cuadrantes */}
-                <div className="flex-1 rounded-md p-6 bg-neutral-200 w-[50%]">
-                    <h3 className="font-bold text-xl">Urgente y No Importante</h3>
-                    <p className="uppercase italic pb-3">Delegar</p>
+                <div 
+                    className={`${cssBoard} bg-neutral-200`}
+                    onDragOver={handleDragOver}
+                    onDrop={(e) => handleDrop(e, false, true)}
+                >
+                    <TitleEisen titleEisen="Urgente y No Importante" subtitleEisen="Delegar" />
                     {noImpAndUrg(selectedItems).map((item) => (
-                        <div
-                            key={item.id}
-                            className="px-6 pt-4 pb-5 bg-white rounded-md mb-2 cursor-pointer 
-                            flex flex-col"
-                        >
-                            <LabelCmi keyResultId={item.id} />
-                            <div className="mt-2 mb-2 ">
-                                {item.description}
-                            </div>
-                            <IconsItem/>
-                        </div>
+                        <CardEisen itemId={item.id} description={item.description} handleDragStart={handleDragStart} />
                     ))}
                 </div>
-                <div className="flex-1 rounded-md p-6 bg-neutral-300 w-[50%]">
-                    <h3 className="font-bold text-xl">No Urgente y No Importante</h3>
-                    <p className="uppercase italic pb-3">Eliminar</p>
+                <div 
+                    className={`${cssBoard} bg-neutral-300`}
+                    onDragOver={handleDragOver}
+                    onDrop={(e) => handleDrop(e, false, false)}
+                >
+                    <TitleEisen titleEisen="No Urgente y No Importante" subtitleEisen="Eliminar" />
                     {noImpAndNoUrg(selectedItems).map((item) => (
-                        <div
-                            key={item.id}
-                            className="px-6 pt-4 pb-5 bg-white rounded-md mb-2 cursor-pointer 
-                            flex flex-col"
-                        >
-                            <LabelCmi keyResultId={item.id} />
-                            <div className="mt-2 mb-2 ">
-                                {item.description}
-                            </div>
-                            <IconsItem/>
-                        </div>
+                        <CardEisen itemId={item.id} description={item.description} handleDragStart={handleDragStart} />
                     ))}
                 </div>
             </div>
