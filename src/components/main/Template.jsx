@@ -4,6 +4,7 @@ import useWebSocket from "../../hook/useWebSocket.jsx";
 import {useEffect, useState} from "react";
 import {unsetToken} from "../../lib/authenticate.js";
 import {WebSocketContextProvider} from "../../context/WebSocketContext.jsx";
+import HeaderApp from "../cmi-okr/header/HeaderApp.jsx";
 
 const Template = () => {
     const navigate = useNavigate();
