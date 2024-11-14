@@ -1,11 +1,11 @@
 import {NavLink, useNavigate} from "react-router-dom"
-import {unsetToken} from "../../lib/authenticate.js";
+import {unsetToken} from "../../lib/authenticate.js"
 
 const Main = () => {
     const navigate = useNavigate();
 
     return (
-        <nav className="flex space-x-6 px-10 mx-10 text-center items-center cursor-pointer"> 
+        <nav className="flex space-x-6 text-center items-center cursor-pointer mx-auto w-full px-4 sm:px-6 lg:px-8"> 
             <NavLink
                 to=""
                 className={({ isActive }) =>
@@ -44,6 +44,7 @@ const Main = () => {
             }}>
                 Cerrar Sesión
             </span>
+            
         </nav>
     );
 };
