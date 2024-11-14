@@ -31,7 +31,7 @@ const Main = () => {
                 Tablero Kanban
             </NavLink>
             <NavLink
-                to="/"
+                to="/matriz-eisenhower"
                 className={({ isActive }) =>
                     isActive ? "text-blue-500 font-bold" : "text-white"
                 }
@@ -39,10 +39,10 @@ const Main = () => {
                 Matriz Eisenhower
             </NavLink>
             <span className="text-white" onClick={() => {
-              unsetToken();
-              navigate('/login');
+                unsetToken();
+                navigate('/login');
             }}>
-              Cerrar Sesión
+                Cerrar Sesión
             </span>
         </nav>
     );

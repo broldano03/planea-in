@@ -90,12 +90,78 @@ export const ItemsProvider = ({ children }) => {
                             description: "Reducir los gastos operativos en un 10% mediante la implementación de procesos de eficiencia en el próximo trimestre.",
                             id: 4278,
                             statusKanban: "Pendiente",
-                            importance: false,
+                            importance: true,
                             urgency: true,
                             startDate: "",
                             endDate: "",
                             manager:"",
-                            projects: []
+                            projects: [
+                                {
+                                    description: "Análisis de procesos operativos",
+                                    id: 596888812,
+                                    statusKanban: "Pendiente",
+                                    importance: false,
+                                    urgency: false,
+                                    startDate: "",
+                                    endDate: "",
+                                    manager:"",
+                                    actions: [
+                                        {
+                                            description: "Elaboración de MAPRO",
+                                            id: 9999812,
+                                            statusKanban: "En Proceso",
+                                            importance: true,
+                                            urgency: false,
+                                            startDate: "",
+                                            endDate: "",
+                                            manager:"",
+                                            tasks: [
+                                                {
+                                                    description: "Observación de Macroprocesos",
+                                                    id: 99144412,
+                                                    statusKanban: "En Proceso",
+                                                    importance: true,
+                                                    urgency: false,
+                                                    startDate: "",
+                                                    endDate: "",
+                                                    manager:"",
+                                                },
+                                                {
+                                                    description: "Elaboración de BPMN",
+                                                    id: 991435244,
+                                                    statusKanban: "Pendiente",
+                                                    importance: false,
+                                                    urgency: true,
+                                                    startDate: "",
+                                                    endDate: "",
+                                                    manager:"",
+                                                },
+                                                {
+                                                    description: "Estudio de tiempos",
+                                                    id: 991435244,
+                                                    statusKanban: "Pendiente",
+                                                    importance: false,
+                                                    urgency: false,
+                                                    startDate: "",
+                                                    endDate: "",
+                                                    manager:"",
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            description: "Ficha de procesos",
+                                            id: 9999812,
+                                            statusKanban: "Pendiente",
+                                            importance: false,
+                                            urgency: true,
+                                            startDate: "",
+                                            endDate: "",
+                                            manager:"",
+                                            tasks: []
+                                        }
+                                    ]
+                                }
+                            ]
                         },
                     ]
                 }
@@ -121,19 +187,42 @@ export const ItemsProvider = ({ children }) => {
                             description: "Incrementar la puntuación de satisfacción del cliente (NPS) de 65 a 80 para el final del trimestre.",
                             id: 9378,
                             statusKanban: "Pendiente",
-                            importance: false,
+                            importance: true,
                             urgency: true,
                             startDate: "",
                             endDate: "",
                             manager:"",
-                            projects: []
+                            projects: [
+                                {
+                                    description: "Desarrollar método de encuestas",
+                                    id: 596412412,
+                                    statusKanban: "En-Proceso",
+                                    importance: true,
+                                    urgency: false,
+                                    startDate: "",
+                                    endDate: "",
+                                    manager:"",
+                                    actions: []
+                                },
+                                {
+                                    description: "Análisis de Encuestas",
+                                    id: 159159412,
+                                    statusKanban: "En-Proceso",
+                                    importance: false,
+                                    urgency: true,
+                                    startDate: "",
+                                    endDate: "",
+                                    manager:"",
+                                    actions: []
+                                },
+                            ]
                         },
                         {
                             description: "Reducir el tiempo promedio de resolución de tickets de soporte de 48 horas a 24 horas.",
                             id: 9379,
                             statusKanban: "En-Proceso",
-                            importance: false,
-                            urgency: true,
+                            importance: true,
+                            urgency: false,
                             startDate: "",
                             endDate: "",
                             manager:"",
@@ -185,7 +274,7 @@ export const ItemsProvider = ({ children }) => {
                             id: 753,
                             statusKanban: "Pendiente",
                             importance: false,
-                            urgency: true,
+                            urgency: false,
                             startDate: "",
                             endDate: "",
                             manager:"",
@@ -201,11 +290,26 @@ export const ItemsProvider = ({ children }) => {
         aspect.objectives?.flatMap(objective => objective.keyResults || [])
     ) || [])
 
+    const [projects, setProjects] = useState (
+        keyResults?.flatMap(kr => kr.projects || []) || []
+    )
+
+    const [actions, setActions] = useState (
+        projects?.flatMap(project => project.actions || []) || []
+    )
+
+    const [tasks, setTasks] = useState (
+        actions?.flatMap(action => action.tasks || []) || []
+    )
+
     return (
         <ItemsContext.Provider
             value={{
                 aspectsCmi, setAspectsCmi,
-                keyResults, setKeyResults
+                keyResults, setKeyResults,
+                projects, setProjects,
+                actions, setActions,
+                tasks, setTasks
                 }}
         >
             {children}

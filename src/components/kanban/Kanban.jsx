@@ -38,7 +38,7 @@ const Kanban = () => {
         <div className="flex px-20 space-x-5 ">
             
             <div
-                className="border-red-600 border-4 bg-neutral-100 px-8 py-6 rounded-md flex-1"
+                className="bg-neutral-100 px-8 py-6 rounded-md flex-1"
                 onDrop={() => handleDrop("Pendiente")}
                 onDragOver={allowDrop}
             >
