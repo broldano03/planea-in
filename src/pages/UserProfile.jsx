@@ -287,7 +287,7 @@ export default function UserProfile() {
                         className="size-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
                     />
                     <label htmlFor="push-everything" className="block text-sm/6 font-medium text-gray-900">
-                        Everything
+                        Siempre
                     </label>
                     </div>
                     <div className="flex items-center gap-x-3">
@@ -298,7 +298,7 @@ export default function UserProfile() {
                         className="size-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
                     />
                     <label htmlFor="push-email" className="block text-sm/6 font-medium text-gray-900">
-                        Same as email
+                        Solo por Correo Electrónico
                     </label>
                     </div>
                     <div className="flex items-center gap-x-3">
@@ -309,7 +309,7 @@ export default function UserProfile() {
                         className="size-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
                     />
                     <label htmlFor="push-nothing" className="block text-sm/6 font-medium text-gray-900">
-                        No push notifications
+                        No enviar notificaciones
                     </label>
                     </div>
                 </div>
@@ -320,13 +320,13 @@ export default function UserProfile() {
 
         <div className="mt-6 flex items-center justify-end gap-x-6">
             <button type="button" className="text-sm/6 font-semibold text-gray-900">
-            Cancel
+            Cancelar
             </button>
             <button
             type="submit"
             className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
             >
-            Save
+            Guardar
             </button>
         </div>
     </form>
