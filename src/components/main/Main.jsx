@@ -1,13 +1,13 @@
 import {NavLink, useNavigate} from "react-router-dom"
-import {unsetToken} from "../../lib/authenticate.js";
+import {unsetToken} from "../../lib/authenticate.js"
 
 const Main = () => {
     const navigate = useNavigate();
 
     return (
-        <nav className="flex space-x-6 px-10 mx-10 text-center items-center cursor-pointer"> 
+        <nav className="flex space-x-6 text-center items-center cursor-pointer mx-auto w-full px-4 sm:px-6 lg:px-8"> 
             <NavLink
-                to=""
+                to="/perfil"
                 className={({ isActive }) =>
                     isActive ? "text-blue-500 font-bold" : "text-white"
                 }
@@ -31,7 +31,7 @@ const Main = () => {
                 Tablero Kanban
             </NavLink>
             <NavLink
-                to="/"
+                to="/matriz-eisenhower"
                 className={({ isActive }) =>
                     isActive ? "text-blue-500 font-bold" : "text-white"
                 }
@@ -39,11 +39,12 @@ const Main = () => {
                 Matriz Eisenhower
             </NavLink>
             <span className="text-white" onClick={() => {
-              unsetToken();
-              navigate('/login');
+                unsetToken();
+                navigate('/login');
             }}>
-              Cerrar Sesión
+                Cerrar Sesión
             </span>
+            
         </nav>
     );
 };

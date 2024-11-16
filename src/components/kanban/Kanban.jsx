@@ -1,123 +1,114 @@
-import React, { useState } from "react"
-import LabelCmi from "../cmi-okr/cmi-okr/LabelCmi"
-import IconsItem from "../cmi-okr/items/IconsItem"
+import { useState } from "react"
 import { useItems } from "../../context/ItemsContext"
+import CardKanban from "./CardKanban"
+import TitleKanban from "./TitleKanban"
+import SelectedNivel from "../eisenhower/SelectedNivel"
+import SubHeader from "../cmi-okr/header/SubHeader"
 
 const Kanban = () => {
 
-    const { keyResults, setKeyResults } = useItems()
+    const { keyResults, setKeyResults, projects, setProjects, actions, setActions, tasks, setTasks } = useItems()
+    const [selectedNivel, setSelectedNivel] = useState('keyResults')
+    const [draggedItemId, setDraggedItemId] = useState(null)
 
-    // Estado temporal para almacenar el ID del elemento que se arrastra
-    const [draggedItemId, setDraggedItemId] = React.useState(null)
+    const handleDragStart = (id) => { setDraggedItemId(id) }
 
-    // Función para manejar el inicio del arrastre
-    const handleDragStart = (id) => {
-        setDraggedItemId(id)
-    }
-
-    // Función para manejar el evento de "drop" en una columna específica
-    const handleDrop = (status) => {
-        setKeyResults((prevKeyResults) =>
-            prevKeyResults.map((item) =>
-                item.id === draggedItemId ? { ...item, statusKanban: status } : item
+    const updateDraggedItem = (newStatusKanban) => {
+        const updateItems = (items, setItems) => {
+            const updatedItems = items.map(item => 
+                item.id === draggedItemId ? { ...item, statusKanban: newStatusKanban} : item
             )
-        )
-        setDraggedItemId(null); // Resetea el ID del elemento arrastrado
+            setItems(updatedItems);
+        }
+
+        switch (selectedNivel) {
+            case 'keyResults':
+                updateItems(keyResults, setKeyResults);
+                break;
+            case 'projects':
+                updateItems(projects, setProjects);
+                break;
+            case 'actions':
+                updateItems(actions, setActions);
+                break;
+            case 'tasks':
+                updateItems(tasks, setTasks);
+                break;
+            default:
+                break;
+        }
     }
 
-    // Permitir que el elemento se deje caer
-    const allowDrop = (event) => {
-        event.preventDefault()
+    const handleDrop = (e, newStatusKanban) => {
+        e.preventDefault()
+        updateDraggedItem(newStatusKanban)
+        setDraggedItemId(null)
     }
 
-    const pendingItems = keyResults.filter((item) => item.statusKanban === "Pendiente")
-    const inProcessItems = keyResults.filter((item) => item.statusKanban === "En-Proceso")
-    const doneItems = keyResults.filter((item) => item.statusKanban === "Hecho")
+    const allowDrop = (e) => { e.preventDefault() }
+
+    const selectedItems = selectedNivel === 'keyResults' ? keyResults :
+    selectedNivel === 'projects' ? projects :
+    selectedNivel === 'actions' ? actions :
+    tasks
+    
+    const pendingItems = selectedItems.filter((item) => item.statusKanban === "Pendiente")
+    const inProcessItems = selectedItems.filter((item) => item.statusKanban === "En-Proceso")
+    const doneItems = selectedItems.filter((item) => item.statusKanban === "Hecho")
 
     return (
-        <div className="flex px-20 space-x-5">
+        <>
+        <SubHeader title="Tablero Kanban" subtitle="Flujo de trabajo limpio" />
+        <div className="pt-5">
+            <SelectedNivel selectedNivel={selectedNivel} setSelectedNivel={setSelectedNivel} />
+        </div>
+        <div className="flex px-20 space-x-5 ">
             
             <div
-                className="bg-neutral-100 px-8 py-6 rounded-md flex-1"
-                onDrop={() => handleDrop("Pendiente")}
+                className="border-t-4 border-blue-900 bg-neutral-100 px-8 py-6 rounded-md flex-1 "
+                onDrop={(e) => handleDrop(e, "Pendiente")}
                 onDragOver={allowDrop}
             >
-                <div className="font-semibold mb-2">
-                    <h3>Pendiente</h3>
-                </div>
+                <TitleKanban titleKanban="Pendiente" />
                 <div>
                     {pendingItems.map((item) => (
-                        <div
-                            key={item.id}
-                            draggable
-                            onDragStart={() => handleDragStart(item.id)}
-                            className="px-3 pt-4 pb-5 bg-white rounded-md mb-2 cursor-pointer 
-                            flex flex-col"
-                        >
-                            <div className="mt-2 mb-2 ">
-                                {item.description}
-                            </div>
-                            <IconsItem/>
-                        </div>
+                        <CardKanban itemId={item.id} 
+                        description={item.description} 
+                        handleDragStart={handleDragStart} />
                     ))}
                 </div>
             </div>
             <div
-                className="bg-neutral-100 px-8 py-6 rounded-md flex-1"
-                onDrop={() => handleDrop("En-Proceso")}
+                className="border-t-4 border-purple-700 bg-neutral-100 px-8 py-6 rounded-md flex-1"
+                onDrop={(e) => handleDrop(e, "En-Proceso")}
                 onDragOver={allowDrop}
             >
-                <div className="font-semibold mb-2">
-                    <h3>En Proceso</h3>
-                </div>
+                <TitleKanban titleKanban="En Proceso" />
                 <div>
                     {inProcessItems.map((item) => (
-                        <div
-                            key={item.id}
-                            draggable
-                            onDragStart={() => handleDragStart(item.id)}
-                            className="px-3 pt-4 pb-5 bg-white rounded-md mb-2 cursor-pointer 
-                            flex flex-col"
-                        >
-
-                            <div className="mt-2 mb-2">
-                                {item.description}
-                            </div>
-                            <IconsItem/>
-                        </div>
+                        <CardKanban itemId={item.id} 
+                        description={item.description} 
+                        handleDragStart={handleDragStart} />
                     ))}
                 </div>
             </div>
             <div
-                className="bg-neutral-100 px-8 py-6 rounded-md flex-1"
-                onDrop={() => handleDrop("Hecho")}
+                className="border-t-4 border-teal-700 bg-neutral-100 px-8 py-6 rounded-md flex-1"
+                onDrop={(e) => handleDrop(e, "Hecho")}
                 onDragOver={allowDrop}
             >
-                <div className="font-semibold mb-2">
-                    <h3>Hecho</h3>
-                </div>
+                <TitleKanban titleKanban="Hecho" />
                 <div>
                     {doneItems.map((item) => (
-                        <div
-                            key={item.id}
-                            draggable
-                            onDragStart={() => handleDragStart(item.id)}
-                            className="px-3 pt-4 pb-5 bg-white rounded-md mb-2 cursor-pointer 
-                            flex flex-col"
-                        >
-
-                            <div className="mt-2 mb-2">
-                                {item.description}
-                            </div>
-                            <IconsItem/>
-                        </div>
+                        <CardKanban itemId={item.id} 
+                        description={item.description} 
+                        handleDragStart={handleDragStart} />
                     ))}
                 </div>
             </div>
         </div>
+        </>
     )
 }
 
 export default Kanban
-
-

@@ -7,6 +7,8 @@ import Kanban from './components/kanban/Kanban.jsx'
 import Template from './components/main/Template.jsx'
 import { ItemsProvider } from './context/ItemsContext.jsx'
 import Login from "./pages/Login.jsx";
+import Eisenhower from './components/eisenhower/Eisenhower.jsx'
+import UserProfile from './pages/UserProfile.jsx'
 
 createRoot(document.getElementById('root')).render(
     <BrowserRouter>
@@ -14,8 +16,10 @@ createRoot(document.getElementById('root')).render(
                 <Routes>
                     <Route path="/" element={<Template/>}>
                         <Route index element={<App/>} />
+                        <Route path="/perfil" element={<UserProfile/>} />
                         <Route path="/cuadro-de-mando" element={<App/>} />
                         <Route path="/tablero-kanban" element={<Kanban />} />
+                        <Route path="/matriz-eisenhower" element={<Eisenhower />} />
                     </Route>
                     <Route path="/login" element={<Login/>} />
                 </Routes>

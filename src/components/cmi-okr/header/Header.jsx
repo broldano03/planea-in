@@ -9,24 +9,24 @@ const Header = () => {
     //
 
     return (
-        <>
-            <div className='flex justify-between items-center py-5 px-20 mb-10 
-            bg-gradient-to-br from-blue-950 via-blue-950 to-blue-900'>
-            
-            {/* Logo a la izquierda */}
-            <Logo />
+        <div className="w-full">
+            <div className='flex items-center py-1 px-20 w-full
+            bg-gradient-to-br from-blue-950 via-blue-950 to-blue-900 '>
+                <div className="flex items-center w-[70%]">
+                    <Logo />
+                    <div className="hidden md:block">
+                        <div className="flex items-center text-left mx-auto">
+                            <Main />
+                        </div>
+                    </div>
+                </div>
 
-            {/* Main en el centro con flex-grow para ocupar el espacio central */}
-            <div className="flex-grow flex justify-center">
-                <Main/>
+                {/* Sección derecha con BrandUser y el icono de menú */}
+                <div className="text-white w-[30%]">
+                    <BrandUser />
+                </div>
             </div>
-
-            {/* Sección derecha con BrandUser y el icono de menú */}
-            <div className="text-white w-[40%] flex justify-between items-center">
-                <BrandUser />
-            </div>
-            </div>
-        </>
+        </div>
     )
 }
 
