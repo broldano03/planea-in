@@ -10,7 +10,7 @@ const Header = () => {
 
     return (
         <div className="w-full">
-            <div className='flex items-center py-1 px-20 mb-10 w-full
+            <div className='flex items-center py-1 px-20 w-full
             bg-gradient-to-br from-blue-950 via-blue-950 to-blue-900 '>
                 <div className="flex items-center w-[70%]">
                     <Logo />

@@ -3,6 +3,7 @@ import { useItems } from "../../context/ItemsContext"
 import CardKanban from "./CardKanban"
 import TitleKanban from "./TitleKanban"
 import SelectedNivel from "../eisenhower/SelectedNivel"
+import SubHeader from "../cmi-okr/header/SubHeader"
 
 const Kanban = () => {
 
@@ -57,11 +58,14 @@ const Kanban = () => {
 
     return (
         <>
-        <SelectedNivel selectedNivel={selectedNivel} setSelectedNivel={setSelectedNivel} />
+        <SubHeader title="Tablero Kanban" subtitle="Flujo de trabajo limpio" />
+        <div className="pt-5">
+            <SelectedNivel selectedNivel={selectedNivel} setSelectedNivel={setSelectedNivel} />
+        </div>
         <div className="flex px-20 space-x-5 ">
             
             <div
-                className="border-t-2 border-emerald-700 bg-neutral-100 px-8 py-6 rounded-md flex-1 "
+                className="border-t-4 border-blue-900 bg-neutral-100 px-8 py-6 rounded-md flex-1 "
                 onDrop={(e) => handleDrop(e, "Pendiente")}
                 onDragOver={allowDrop}
             >
@@ -75,7 +79,7 @@ const Kanban = () => {
                 </div>
             </div>
             <div
-                className="bg-neutral-100 px-8 py-6 rounded-md flex-1"
+                className="border-t-4 border-purple-700 bg-neutral-100 px-8 py-6 rounded-md flex-1"
                 onDrop={(e) => handleDrop(e, "En-Proceso")}
                 onDragOver={allowDrop}
             >
@@ -89,7 +93,7 @@ const Kanban = () => {
                 </div>
             </div>
             <div
-                className="bg-neutral-100 px-8 py-6 rounded-md flex-1"
+                className="border-t-4 border-teal-700 bg-neutral-100 px-8 py-6 rounded-md flex-1"
                 onDrop={(e) => handleDrop(e, "Hecho")}
                 onDragOver={allowDrop}
             >

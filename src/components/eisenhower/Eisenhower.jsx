@@ -3,6 +3,7 @@ import { useItems } from "../../context/ItemsContext"
 import CardEisen from "./CardEisen"
 import TitleEisen from "./TitleEisen"
 import SelectedNivel from "./SelectedNivel"
+import SubHeader from "../cmi-okr/header/SubHeader"
 
 const Eisenhower = () => {
 
@@ -67,18 +68,21 @@ const Eisenhower = () => {
                         selectedNivel === 'actions' ? actions :
                         tasks
 
-    const cssBoard = "flex-1 rounded-md p-6"
+    const cssBoard = "flex-1 rounded-md p-6 bg-neutral-100 border-t-4"
     return (
         <>
-        {/* Selector de nivel */}
-        <SelectedNivel selectedNivel={selectedNivel} setSelectedNivel={setSelectedNivel} />
+        <SubHeader title="Matriz Eisenhower" subtitle="Prioriza según tus recursos" />
+        
+        <div className="pt-6">
+            <SelectedNivel selectedNivel={selectedNivel} setSelectedNivel={setSelectedNivel} />
+        </div>
 
         <div className="flex items-center flex-1 w-full">
             <div className="flex gap-4 py-4 px-20 w-full">
 
                 {/* Cuadrantes */}
                 <div 
-                    className={`${cssBoard} bg-slate-300`}
+                    className={`${cssBoard} border-red-700`}
                     onDragOver={handleDragOver}
                     onDrop={(e) => handleDrop(e, true, true)}
                 >
@@ -89,7 +93,7 @@ const Eisenhower = () => {
                 </div>
 
                 <div 
-                    className={`${cssBoard} bg-slate-200`}
+                    className={`${cssBoard} border-blue-900`}
                     onDragOver={handleDragOver}
                     onDrop={(e) => handleDrop(e, true, false)}
                 >
@@ -104,7 +108,7 @@ const Eisenhower = () => {
         <div className="flex items-center flex-1 w-full">
             <div className="flex gap-4 py-4 px-20 w-full">
                 <div 
-                    className={`${cssBoard} bg-neutral-200`}
+                    className={`${cssBoard} border-sky-800`}
                     onDragOver={handleDragOver}
                     onDrop={(e) => handleDrop(e, false, true)}
                 >
@@ -114,7 +118,7 @@ const Eisenhower = () => {
                     ))}
                 </div>
                 <div 
-                    className={`${cssBoard} bg-neutral-300`}
+                    className={`${cssBoard}  border-indigo-800`}
                     onDragOver={handleDragOver}
                     onDrop={(e) => handleDrop(e, false, false)}
                 >

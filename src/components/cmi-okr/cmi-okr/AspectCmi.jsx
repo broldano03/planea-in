@@ -1,4 +1,5 @@
 import { useItems } from "../../../context/ItemsContext"
+import SubHeader from "../header/SubHeader"
 import AddIconSup from "../items/superiorItems/AddIconSup"
 import Okrs from "./Okrs"
 
@@ -7,14 +8,9 @@ const AspectCmi = () => {
     const { aspectsCmi } = useItems()
 
     return (
-        <div className="aspects mx-48">
-            
-            <div className="pb-8">
-                <h1 className="text-center  text-neutral-900 font-bold uppercase text-2xl">
-                    Cuadro de Mando Integral
-                </h1>
-                <p className="text-center text-neutral-700 italic">¡Gestión Estratégica!</p>
-            </div>
+        <>
+        <SubHeader title="Cuadro de Mando Integral" subtitle="¡Gestión Estratégica!"/>
+        <div className="aspects mx-48 mt-10">
             <div className="text-center">
                 {aspectsCmi.map((aspectCmi) => {
                     return (
@@ -37,6 +33,7 @@ const AspectCmi = () => {
                 })}
             </div>
         </div>
+        </>
     )
 }
 

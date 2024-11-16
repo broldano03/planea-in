@@ -7,7 +7,7 @@ const Main = () => {
     return (
         <nav className="flex space-x-6 text-center items-center cursor-pointer mx-auto w-full px-4 sm:px-6 lg:px-8"> 
             <NavLink
-                to=""
+                to="/perfil"
                 className={({ isActive }) =>
                     isActive ? "text-blue-500 font-bold" : "text-white"
                 }
