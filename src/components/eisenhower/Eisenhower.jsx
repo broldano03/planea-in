@@ -2,11 +2,12 @@ import { useState } from "react"
 import { useItems } from "../../context/ItemsContext"
 import CardEisen from "./CardEisen"
 import TitleEisen from "./TitleEisen"
+import SelectedNivel from "./SelectedNivel"
 
 const Eisenhower = () => {
 
     const { keyResults, setKeyResults, projects, setProjects, actions, setActions, tasks, setTasks } = useItems()
-    const [selectedCategory, setSelectedCategory] = useState('keyResults')
+    const [selectedNivel, setSelectedNivel] = useState('keyResults')
     const [draggedItemId, setDraggedItemId] = useState(null)
 
     const filterByImportanceAndUrgency = (items, importance, urgency) => {
@@ -28,21 +29,21 @@ const Eisenhower = () => {
             setItems(updatedItems);
         }
 
-        switch (selectedCategory) {
-            case 'keyResults':
-                updateItems(keyResults, setKeyResults);
-                break;
-            case 'projects':
-                updateItems(projects, setProjects);
-                break;
-            case 'actions':
-                updateItems(actions, setActions);
-                break;
-            case 'tasks':
-                updateItems(tasks, setTasks);
-                break;
-            default:
-                break;
+    switch (selectedNivel) {
+        case 'keyResults':
+            updateItems(keyResults, setKeyResults);
+            break;
+        case 'projects':
+            updateItems(projects, setProjects);
+            break;
+        case 'actions':
+            updateItems(actions, setActions);
+            break;
+        case 'tasks':
+            updateItems(tasks, setTasks);
+            break;
+        default:
+            break;
         }
     }
 
@@ -61,28 +62,16 @@ const Eisenhower = () => {
     const noImpAndUrg = (items) => filterByImportanceAndUrgency(items, false, true)
     const noImpAndNoUrg = (items) => filterByImportanceAndUrgency(items, false, false)
 
-    const selectedItems = selectedCategory === 'keyResults' ? keyResults :
-                        selectedCategory === 'projects' ? projects :
-                        selectedCategory === 'actions' ? actions :
+    const selectedItems = selectedNivel === 'keyResults' ? keyResults :
+                        selectedNivel === 'projects' ? projects :
+                        selectedNivel === 'actions' ? actions :
                         tasks
 
     const cssBoard = "flex-1 rounded-md p-6"
     return (
         <>
-        {/* Selector de categoría */}
-        <div className="flex items-center flex-1 mb-4 px-20">
-            <label className="mr-2">Seleccionar categoría:</label>
-            <select 
-                value={selectedCategory} 
-                onChange={(e) => setSelectedCategory(e.target.value)} 
-                className="border p-2"
-            >
-                <option value="keyResults">Resultados Clave </option>
-                <option value="projects">Proyectos </option>
-                <option value="actions">Acciones </option>
-                <option value="tasks">Tareas </option>
-            </select>
-        </div>
+        {/* Selector de nivel */}
+        <SelectedNivel selectedNivel={selectedNivel} setSelectedNivel={setSelectedNivel} />
 
         <div className="flex items-center flex-1 w-full">
             <div className="flex gap-4 py-4 px-20 w-full">

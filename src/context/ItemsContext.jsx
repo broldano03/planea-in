@@ -52,7 +52,7 @@ export const ItemsProvider = ({ children }) => {
                                                 {
                                                     description: "Observar procesos",
                                                     id: 59417568224,
-                                                    statusKanban: "Pendiente",
+                                                    statusKanban: "En-Proceso",
                                                     importance: true,
                                                     urgency: true,
                                                     startDate: "",
@@ -109,7 +109,7 @@ export const ItemsProvider = ({ children }) => {
                                         {
                                             description: "Elaboración de MAPRO",
                                             id: 9999812,
-                                            statusKanban: "En Proceso",
+                                            statusKanban: "Hecho",
                                             importance: true,
                                             urgency: false,
                                             startDate: "",
@@ -118,8 +118,8 @@ export const ItemsProvider = ({ children }) => {
                                             tasks: [
                                                 {
                                                     description: "Observación de Macroprocesos",
-                                                    id: 99144412,
-                                                    statusKanban: "En Proceso",
+                                                    id: 95511412,
+                                                    statusKanban: "Hecho",
                                                     importance: true,
                                                     urgency: false,
                                                     startDate: "",
@@ -129,7 +129,7 @@ export const ItemsProvider = ({ children }) => {
                                                 {
                                                     description: "Elaboración de BPMN",
                                                     id: 991435244,
-                                                    statusKanban: "Pendiente",
+                                                    statusKanban: "En-Proceso",
                                                     importance: false,
                                                     urgency: true,
                                                     startDate: "",
@@ -138,7 +138,7 @@ export const ItemsProvider = ({ children }) => {
                                                 },
                                                 {
                                                     description: "Estudio de tiempos",
-                                                    id: 991435244,
+                                                    id: 991438888,
                                                     statusKanban: "Pendiente",
                                                     importance: false,
                                                     urgency: false,
@@ -196,7 +196,7 @@ export const ItemsProvider = ({ children }) => {
                                 {
                                     description: "Desarrollar método de encuestas",
                                     id: 596412412,
-                                    statusKanban: "En-Proceso",
+                                    statusKanban: "Hecho",
                                     importance: true,
                                     urgency: false,
                                     startDate: "",

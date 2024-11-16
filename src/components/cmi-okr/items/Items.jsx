@@ -18,7 +18,7 @@ const Items = ({ items, setItems}) => {
                     >
                         <div className='flex flex-col ml-4'>
                             <div className='flex items-center'>
-                                <span className="text-left block whitespace-normal break-words mt-2 mr-2">
+                                <span className="text-left block whitespace-normal break-words mr-2">
                                     {item.description}
                                 </span>
                                 <div className="ml-auto mr-2">

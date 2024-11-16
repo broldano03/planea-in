@@ -7,7 +7,7 @@ const AspectCmi = () => {
     const { aspectsCmi } = useItems()
 
     return (
-        <div className="aspects mx-20">
+        <div className="aspects mx-48">
             
             <div className="pb-8">
                 <h1 className="text-center  text-neutral-900 font-bold uppercase text-2xl">
