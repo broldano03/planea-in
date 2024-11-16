@@ -4,9 +4,11 @@ import useWebSocket from "../../hook/useWebSocket.jsx";
 import {useEffect, useState} from "react";
 import {unsetToken} from "../../lib/authenticate.js";
 import {WebSocketContextProvider} from "../../context/WebSocketContext.jsx";
+import {useItems} from "../../context/ItemsContext.jsx";
 
 const Template = () => {
     const navigate = useNavigate();
+    const { aspectsCmi, setAspectsCmi } = useItems();
     const [ user, setUser ] = useState(null);
     const ws = useWebSocket({ handleNoToken: logout });
 
@@ -29,6 +31,12 @@ const Template = () => {
 
         // request organization information
         ws.sendAuthenticatedMessage({ type: 'fetchInstance', body: 'devintio' });
+        break;
+      }
+      case 'instanceData': {
+        const aspects = message.body.aspects;
+        console.log(`Received aspects `, aspects);
+        setAspectsCmi(aspects);
         break;
       }
       case 'error': {
