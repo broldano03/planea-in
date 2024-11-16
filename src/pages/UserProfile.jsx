@@ -1,6 +1,14 @@
 import { PhotoIcon, UserCircleIcon } from '@heroicons/react/24/solid'
+import {useUser} from "../context/UserContext.jsx";
+import {useNavigate} from "react-router-dom";
 
 export default function UserProfile() {
+    const [ user, setUser ] = useUser();
+
+    if (!user) {
+        return <>Cargando...</>;
+    }
+
     return (
         <form className='px-52 py-10'>
         <div className="space-y-12">
@@ -22,7 +30,7 @@ export default function UserProfile() {
                         id="username"
                         name="username"
                         type="text"
-                        placeholder="joerodriguez"
+                        value={user.username}
                         autoComplete="username"
                         className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm/6"
                     />

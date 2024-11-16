@@ -6,11 +6,12 @@ import {unsetToken} from "../../lib/authenticate.js";
 import {WebSocketContextProvider} from "../../context/WebSocketContext.jsx";
 import {useItems} from "../../context/ItemsContext.jsx";
 import HeaderApp from "../cmi-okr/header/HeaderApp.jsx";
+import {UserContextProvider, useUser} from "../../context/UserContext.jsx";
 
 const Template = () => {
     const navigate = useNavigate();
     const { aspectsCmi, setAspectsCmi } = useItems();
-    const [ user, setUser ] = useState(null);
+    const [ user, setUser ] = useUser();
     const ws = useWebSocket({ handleNoToken: logout });
 
   function logout() {

@@ -9,9 +9,11 @@ import { ItemsProvider } from './context/ItemsContext.jsx'
 import Login from "./pages/Login.jsx";
 import Eisenhower from './components/eisenhower/Eisenhower.jsx'
 import UserProfile from './pages/UserProfile.jsx'
+import {UserContextProvider} from "./context/UserContext.jsx";
 
 createRoot(document.getElementById('root')).render(
     <BrowserRouter>
+        <UserContextProvider user={null}>
             <ItemsProvider>
                 <Routes>
                     <Route path="/" element={<Template/>}>
@@ -24,5 +26,6 @@ createRoot(document.getElementById('root')).render(
                     <Route path="/login" element={<Login/>} />
                 </Routes>
             </ItemsProvider>
+        </UserContextProvider>
     </BrowserRouter>
 )
