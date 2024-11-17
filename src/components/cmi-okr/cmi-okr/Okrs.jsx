@@ -5,11 +5,7 @@ import ShowItems from "../items/ShowItems"
 
 const Okrs = ({aspectCmi}) => {
     
-    const { aspectsCmi } = useItems()
-
-    const objectives = aspectsCmi
-        .filter((aspect) => aspect.cod === aspectCmi.cod)
-        .flatMap((aspect) => aspect.objectives)
+    const objectives = aspectCmi.objectives
     
     return (
         <>
