@@ -4,6 +4,13 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
+  safelist: [
+    'bg-gradient-to-br from-blue-900 via-blue-800 to-blue-600',
+    'bg-gradient-to-br from-fuchsia-900 via-fuchsia-850 to-fuchsia-600',
+    'bg-gradient-to-br from-teal-800 via-teal-700 to-teal-600',
+    'bg-gradient-to-br from-sky-950 via-sky-900 to-sky-700',
+    
+  ],
   theme: {
     extend: {
       spacing: {
