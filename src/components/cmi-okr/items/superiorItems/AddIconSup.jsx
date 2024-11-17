@@ -2,6 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import { useState, useRef} from 'react'
 import InputSupItem from './InputSupItem'
+import usePlaneaLib from '../../../../lib/planealib.js'
 
 const AddIconSup = ({aspectCmi}) => {
 
@@ -29,7 +30,7 @@ const AddIconSup = ({aspectCmi}) => {
         </button>
         {showInput && (
             <div ref={inputRef} tabIndex="0" onBlur={handleBlur}>
-                <InputSupItem/>
+                <InputSupItem aspectCmi={aspectCmi}/>
             </div>
         )}
         </>
