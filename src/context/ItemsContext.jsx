@@ -26,7 +26,21 @@ export const ItemsProvider = ({ children }) => {
     return (
         <ItemsContext.Provider
             value={{
-                aspectsCmi, setAspectsCmi,
+                aspectsCmi, setAspectsCmi: (_aspectsCmi) => {
+                  setAspectsCmi(_aspectsCmi);
+                  setKeyResults(_aspectsCmi?.flatMap(aspect =>
+                    aspect.objectives?.flatMap(objective => objective.keyResults || [])
+                  ) || []);
+                  setProjects(
+                    keyResults?.flatMap(kr => kr.projects || []) || []
+                  );
+                  setActions(
+                    projects?.flatMap(project => project.actions || []) || []
+                  );
+                  setTasks(
+                    actions?.flatMap(action => action.tasks || []) || []
+                  );
+                },
                 keyResults, setKeyResults,
                 projects, setProjects,
                 actions, setActions,
