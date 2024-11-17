@@ -28,18 +28,16 @@ export const ItemsProvider = ({ children }) => {
             value={{
                 aspectsCmi, setAspectsCmi: (_aspectsCmi) => {
                   setAspectsCmi(_aspectsCmi);
-                  setKeyResults(_aspectsCmi?.flatMap(aspect =>
-                    aspect.objectives?.flatMap(objective => objective.keyResults || [])
-                  ) || []);
-                  setProjects(
-                    keyResults?.flatMap(kr => kr.projects || []) || []
-                  );
-                  setActions(
-                    projects?.flatMap(project => project.actions || []) || []
-                  );
-                  setTasks(
-                    actions?.flatMap(action => action.tasks || []) || []
-                  );
+                  const newKeyResults = _aspectsCmi?.flatMap(aspect =>
+                      aspect.objectives?.flatMap(objective => objective.keyResults || [])
+                  ) || [];
+                  const newProjects = newKeyResults?.flatMap(kr => kr.projects || []) || [];
+                  const newActions = newProjects?.flatMap(project => project.actions || []) || [];
+                  const newTasks = actions?.flatMap(action => action.tasks || []) || [];
+                  setKeyResults(newKeyResults);
+                  setProjects(newProjects);
+                  setActions(newActions);
+                  setTasks(newTasks);
                 },
                 keyResults, setKeyResults,
                 projects, setProjects,
