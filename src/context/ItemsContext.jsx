@@ -33,7 +33,7 @@ export const ItemsProvider = ({ children }) => {
                   ) || [];
                   const newProjects = newKeyResults?.flatMap(kr => kr.projects || []) || [];
                   const newActions = newProjects?.flatMap(project => project.actions || []) || [];
-                  const newTasks = actions?.flatMap(action => action.tasks || []) || [];
+                  const newTasks = newActions?.flatMap(action => action.tasks || []) || [];
                   setKeyResults(newKeyResults);
                   setProjects(newProjects);
                   setActions(newActions);
