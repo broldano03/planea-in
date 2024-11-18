@@ -81,6 +81,7 @@ export default function Login() {
                       type="text"
                       required
                       autoComplete="username"
+                      placeholder='dummy'
                       className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6"
                       value={username}
                       onChange={e => setUsername(e.target.value)}
@@ -99,11 +100,12 @@ export default function Login() {
                     </a>
                   </div>
                 </div>
-                <div className="mt-2">
+                <div className="my-2">
                   <input
                       id="password"
                       name="password"
                       type="password"
+                      placeholder='dummy'
                       required
                       autoComplete="current-password"
                       className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm/6"
@@ -130,6 +132,13 @@ export default function Login() {
                 Regístrate gratis
               </a>
             </p>
+          </div>
+          <div className='text-center my-5'>
+            <h3 className='font-bold'>
+              Accede a una demostración con:
+            </h3>
+            <p>Usuario: dummy</p>
+            <p>Contraseña: dummy </p>
           </div>
         </div>
       </div>
