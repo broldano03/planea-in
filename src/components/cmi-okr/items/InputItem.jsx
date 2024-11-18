@@ -1,32 +1,14 @@
-import { useState } from "react"
-import { v4 as uuidv4 } from 'uuid'
+import { handleAddItemHelper } from "../../../helpers/handleAddItem.js"
+import { handleKeyDownHelper } from "../../../helpers/handleKeyDown.js"
+import useAddItem from "../../../hook/useAddItem"
 
-const InputItem = ({setItems, parentId}) => {
+const InputItem = ({setItems, parentId, aspectCmi}) => {
 
-    const [inputValue, setInputValue] = useState('')
-
-    const addItem = (item) => {
-        const newItem = {
-            description: item,
-            id: uuidv4(),
-            parentId,
-        }
-
-        setItems((prevItems) => [...prevItems, newItem])
-        setInputValue('')
-    }
+    const { inputValue, setInputValue, addItem } = useAddItem(setItems, parentId, aspectCmi)
     
-    const handleAddItem = () => {
-        if (inputValue.trim()) {
-                addItem(inputValue)
-            }
-        }
+    const handleAddItem = () => { handleAddItemHelper(inputValue, addItem) }
 
-    const handleKeyDown = (e) => {
-        if (e.key === 'Enter') {
-            handleAddItem()
-        }
-    }
+    const handleKeyDown = (e) => { handleKeyDownHelper(e, handleAddItem) }
 
     return (
         <>

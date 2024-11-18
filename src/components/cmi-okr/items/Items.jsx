@@ -1,63 +1,33 @@
-
-import { useState } from 'react'
 import IconsItem from './IconsItem'
-import DotsIcon from './DotsIcon'
 
-// Lista de items
 const Items = ({ items, setItems}) => {
-    const [draggingIndex, setDraggingIndex] = useState(null)
 
-    const handleDragStart = (e, index) => {
-        e.dataTransfer.setData('dragIndex', index)
-        setDraggingIndex(index)
-        console.log(`Started dragging item at index ${index}`)
+    const handleDeleteItem = (id) => {
+        setItems((prevItems) => prevItems.filter(item => item.id !== id))
     }
-
-    const handleDrop = (e, dropIndex) => {
-        const dragIndex = parseInt(e.dataTransfer.getData('dragIndex'), 10)
-
-        if (isNaN(dragIndex) || dragIndex === dropIndex) return
-
-        const newItems = [...items]
-        const [movedItem] = newItems.splice(dragIndex, 1)
-        newItems.splice(dropIndex, 0, movedItem)
-
-        setItems(newItems)
-        setDraggingIndex(null)
-    }
-
-    const handleDragOver = (e) => {
-        e.preventDefault()
-    }
-
-    const handleDragEnd = () => {
-        setDraggingIndex(null)
-        console.log("Drag ended")
-    }
-
-
 
     return (
-        <div>
+        <div> 
             <ul>
-                {items.map((item, index) => (
+                {items.map((item) => (
                     <li
-                        key={item.id} draggable
-                        onDragStart={(evt) => handleDragStart(evt, index)}
-                        onDragOver={handleDragOver}
-                        onDrop={(e) => handleDrop(e, index)}
-                        onDragEnd={handleDragEnd}
+                        key={item.id}
                         className={`bg-white cursor-pointer my-3 rounded-[15px] 
-                                text-center p-2 shadow-md transition-transform 
-                                transform hover:scale-105 flex items-center 
-                                ${draggingIndex === index ? 'bg-blue-400' : ''} `}
+                                text-center px-2 py-3 shadow-md transition-transform 
+                                hover:bg-gray-100  z-10`}
                     >
-                        <DotsIcon/>
-                        <span className="block whitespace-normal break-words">
-                            {item.description}
-                        </span>
-                        <div className="ml-auto mr-2" >
-                            <IconsItem />
+                        <div className='flex flex-col ml-4'>
+                            <div className='flex items-center'>
+                                <span className="text-left block whitespace-normal break-words mr-2">
+                                    {item.description}
+                                </span>
+                                <div className="ml-auto mr-2">
+                                    <IconsItem 
+                                        itemId={item.id} 
+                                        handleDeleteItem={handleDeleteItem} 
+                                    />
+                                </div>
+                            </div>
                         </div>
                     </li>
                 ))}

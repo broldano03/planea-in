@@ -1,50 +1,36 @@
-import { useState } from "react"
-import { v4 as uuidv4 } from 'uuid'
+import { useState } from "react";
+import usePlaneaLib from "../../../../lib/planealib";
 
-const InputSupItem = ({setSupItems, aspectCmi}) => {
+const InputSupItem = ({ aspectCmi }) => {
+  const planealib = usePlaneaLib();
+  const [inputValue, setInputValue] = useState("");
 
-    const [inputValue, setInputValue] = useState('')
-
-    const addSupItem = (supItem) => {
-        const newSupItem = {
-            description: supItem,
-            id: uuidv4(),
-            aspectCmi: aspectCmi.cod,
-            keyResults: [],
-        }
-
-        setSupItems((prevSupItems) => [...prevSupItems, newSupItem])
-        setInputValue('')
+  const handleAddItem = () => {
+    if (inputValue.trim()) {
+      planealib.createObjective(aspectCmi.id, inputValue);
+      setInputValue(""); // Limpia el input después de agregar el objetivo
     }
-    
-    const handleAddSupItem = () => {
-        if (inputValue.trim()) {
-                addSupItem(inputValue)
-            }
-        }
+  };
 
-    const handleKeyDown = (e) => {
-        if (e.key === 'Enter') {
-            handleAddSupItem()
-        }
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      handleAddItem(); // Llama a `handleAddItem` directamente
     }
+  };
 
-    return (
-        <>
-        <div  >
-            
-            <input 
-                className="py-2 px-3 text-black bg-slate-100 rounded-md" 
-                name="text"
-                type="text"
-                placeholder="Redacta aquí"
-                value={inputValue}
-                onChange={(e) => setInputValue(e.target.value)}
-                onKeyDown={handleKeyDown} /> 
-            
-        </div>
-        </>
-    )
-}
+  return (
+    <div>
+      <input
+        className="py-2 px-3 text-black bg-slate-100 rounded-md"
+        name="text"
+        type="text"
+        placeholder="Redacta aquí"
+        value={inputValue}
+        onChange={(e) => setInputValue(e.target.value)}
+        onKeyDown={handleKeyDown} // Pasar `handleKeyDown` sin callback extra
+      />
+    </div>
+  );
+};
 
-export default InputSupItem
+export default InputSupItem;
