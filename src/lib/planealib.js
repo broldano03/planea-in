@@ -27,6 +27,17 @@ export default function usePlaneaLib() {
     });
   }
 
+  function deleteObjective(aspect, id) {
+    ws.sendAuthenticatedMessage({
+      type: 'deleteObjective',
+      body: {
+        instance: 'devintio',
+        aspect,
+        id
+      }
+    });
+  }
+
   function getProfilePictureUrl() {
     return `${BASE_URL}/user/avatars/${user.id}`;
   }
@@ -59,6 +70,7 @@ export default function usePlaneaLib() {
 
   return {
     createObjective,
+    deleteObjective,
     getProfilePictureUrl,
     changeProfilePicture
   };
