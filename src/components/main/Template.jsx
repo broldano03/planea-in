@@ -42,10 +42,10 @@ const Template = () => {
         break;
       }
       case 'error': {
-        if (message.body.error === 'Invalid access token') {
+        if (message.body.error === 'Invalid authentication token') {
           logout();
         } else {
-          console.error(message.body);
+          console.error(message.body.error);
         }
         break;
       }
