@@ -5,7 +5,7 @@ import {getToken} from "./authenticate.js";
 const BASE_URL = import.meta.env.VITE_API_URL;
 
 export default function usePlaneaLib() {
-  const ws = useWebSocketConnection();
+  const [ ws ] = useWebSocketConnection();
   const [ user ] = useUser();
 
   function requireToken() {
