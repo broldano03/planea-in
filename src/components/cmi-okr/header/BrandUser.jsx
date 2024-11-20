@@ -1,8 +1,11 @@
 import { BellIcon } from '@heroicons/react/24/outline'
-import UserPhoto from '../../../assets/bruno-perfil.jpg'
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/react'
+import usePlaneaLib from "../../../lib/planealib.js";
+import {useUser} from "../../../context/UserContext.jsx";
 
 const BrandUser = () => {
+    const [ user ] = useUser();
+    const planealib = usePlaneaLib();
 
     const userNavigation = [
         { name: 'Your Profile', href: '#' },
@@ -12,6 +15,10 @@ const BrandUser = () => {
     
     function classNames(...classes) {
         return classes.filter(Boolean).join(' ')
+    }
+
+    if (!user) {
+      return <>Cargando...</>;
     }
 
     return (
@@ -36,7 +43,7 @@ const BrandUser = () => {
                     <span className="sr-only">Ver notificación</span>
                     <BellIcon aria-hidden="true" className="size-6" />
                 </button>
-                <img src={UserPhoto} alt="Foto de usuario" className='rounded-full size-12 m-auto'/>
+                <img src={planealib.getProfilePictureUrl()} alt="Foto de usuario" className='rounded-full size-12 m-auto'/>
             </div>
             <Disclosure>
             <DisclosurePanel className="md:hidden">
