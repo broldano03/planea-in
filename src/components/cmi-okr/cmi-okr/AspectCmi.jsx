@@ -10,7 +10,7 @@ const AspectCmi = () => {
     return (
         <>
         <SubHeader title="Cuadro de Mando Integral" subtitle="¡Gestión Estratégica!"/>
-        <div className="aspects mx-48 mt-10">
+        <div className="aspects mx-auto w-[90%] max-w-[1200px] mt-10">
             <div className="text-center">
                 {aspectsCmi.map((aspectCmi) => {
                     return (
