@@ -121,7 +121,7 @@ export default function ChatBox() {
                     </div>
 
                     {/* Input section */}
-                    <form className="flex items-center border-t border-solid border-white/20 shadow-2xl" onSubmit="return false">
+                    <form className="flex items-center border-t border-solid border-white/20 shadow-2xl" onSubmit={() => false}>
                         <input
                             type="text"
                             className="w-full px-6 py-4 rounded-bl-lg border-none"
