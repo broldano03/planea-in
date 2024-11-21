@@ -1,8 +1,10 @@
 import { PhotoIcon, UserCircleIcon } from '@heroicons/react/24/solid'
 import {useUser} from "../context/UserContext.jsx";
-import {useNavigate} from "react-router-dom";
+import usePlaneaLib from "../lib/planealib.js";
+import {useState} from "react";
 
 export default function UserProfile() {
+    const planealib = usePlaneaLib();
     const [ user, setUser ] = useUser();
 
     if (!user) {
@@ -60,12 +62,15 @@ export default function UserProfile() {
                 </label>
                 <div className="mt-2 flex items-center gap-x-3">
                     <UserCircleIcon aria-hidden="true" className="size-12 text-gray-300" />
-                    <button
-                    type="button"
+                    <input
+                    type="file"
                     className="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
-                    >
-                    Cambiar
-                    </button>
+                    accept="image/png"
+                    onChange={e => {
+                        planealib.changeProfilePicture(e.target.files[0])
+                            .catch(console.error);
+                    }}
+                    />
                 </div>
                 </div>
 
