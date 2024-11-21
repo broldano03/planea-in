@@ -1,5 +1,6 @@
 import {useEffect, useRef, useState} from "react";
 import { PaperAirplaneIcon } from "@heroicons/react/24/solid/index.js";
+import {getToken} from "../../lib/authenticate.js";
 
 // Messages the user could send to the AI
 const messageSuggestions = [
@@ -61,7 +62,8 @@ export default function ChatBox() {
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
                 message: input,
-                history: messages
+                history: messages,
+                token: getToken()
             })
         })
             .then(response => response.json())
