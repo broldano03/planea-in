@@ -30,7 +30,7 @@ const Okrs = ({aspectCmi}) => {
                                         {objective.description}
                                     </span>
                                     <div className="ml-auto mr-2 " >
-                                        <IconsItem />
+                                        <IconsItem aspectCmi={aspectCmi} objective={objective} />
                                     </div>
                                 </li>
                             </div>
