@@ -1,7 +1,13 @@
 import { faArrowUp19, faPenToSquare, faTrash, faList, faUser, faCalendar, faBarsStaggered, faWindowMaximize } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import usePlaneaLib from "../../../lib/planealib";
 
-const SubMain = () => {
+const SubMain = ({aspectCmi, objective}) => {
+    const planealib = usePlaneaLib();
+
+    const handleDeleteObjective = () => {
+        planealib.deleteObjective(aspectCmi.id, objective.id);
+    }
 
     return (
         <>
@@ -22,7 +28,8 @@ const SubMain = () => {
                 <span className="ml-2"> Editar ítem </span>
             </div>
             <div className="rounded-md px-4 py-2 cursor-pointer
-            hover:bg-gray-100" >
+            hover:bg-gray-100"
+            onClick={handleDeleteObjective} >
                 <FontAwesomeIcon icon={faTrash}  />
                 <span className="ml-2"> Borrar ítem </span>
             </div>

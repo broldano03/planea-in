@@ -1,11 +1,8 @@
 import IconsItem from './IconsItem'
 
-const Items = ({ items, setItems}) => {
+const Items = ({ items, aspectCmi }) => {
 
-    const handleDeleteItem = (id) => {
-        setItems((prevItems) => prevItems.filter(item => item.id !== id))
-    }
-
+    
     return (
         <div> 
             <ul>
@@ -24,7 +21,7 @@ const Items = ({ items, setItems}) => {
                                 <div className="ml-auto mr-2">
                                     <IconsItem 
                                         itemId={item.id} 
-                                        handleDeleteItem={handleDeleteItem} 
+                                        aspectCmi={aspectCmi}
                                     />
                                 </div>
                             </div>
